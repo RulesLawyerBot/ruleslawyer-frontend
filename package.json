@@ -4,7 +4,8 @@
   "description": "frontend for ruleslawyer",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rm -rf dist; webpack --mode development",
+    "start": "webpack serve --mode development"
   },
   "author": "",
   "license": "ISC",
