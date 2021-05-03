@@ -12,11 +12,12 @@ interface State {
 }
 
 interface RLReturnData {
-    lastPageNumber: number,
+    // lastPageNumber: number,
     request: {
         pageNumber: number,
         ruleRequestCategory: string,
-        ruleSource: string
+        ruleSource: string,
+        keywords: string[]
     },
     rules: RuleData[]
 }
@@ -36,7 +37,7 @@ export class App extends React.Component<{}, State> {
     }
 
     private async getRules(query: string): Promise<void> {
-        let url: URL = new URL("http://ruleslawyer-api.herokuapp.com/search")
+        let url: URL = new URL("http://ruleslawyer-api.herokuapp.com/api/search")
         let params = {
             keywords: query
         }
@@ -53,9 +54,6 @@ export class App extends React.Component<{}, State> {
         } else {
             this.setState({statusMessage: `Search for "${query}" returned no results.`})
         }
-
-        console.log(this.state.statusMessage)
-        console.log(this.state.displayedRules)
     }
     
     render(): React.ReactElement {

@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+
 module.exports = {
     entry: './src/index.ts',
     output: {
@@ -20,7 +21,7 @@ module.exports = {
     ],
     resolve: {
         modules: ['src', 'node_modules'],
-        extensions: ['.ts', '.tsx', '.js']
+        extensions: ['.ts', '.tsx', '.js', '.css']
     },
     module: {
         rules: [
@@ -38,9 +39,8 @@ module.exports = {
               loader: 'source-map-loader'
             },
             {
-              test: /\.css/,
-              loaders: ['style', 'css'],
-              include: __dirname + '/src'
+              test: /\.css$/i,
+              use: ['style-loader', 'typings-for-css-modules-loader'],
             }
           ]
     }

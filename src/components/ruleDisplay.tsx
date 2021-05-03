@@ -2,6 +2,7 @@ import * as React from 'react'
 import { RuleData } from '../app'
 import { Fragment } from 'react'
 
+import { cssExports as css } from '../styles/rule.module.css'
 
 interface Props {
     rule: RuleData
@@ -34,7 +35,7 @@ function RuleDisplay(props: Props): React.ReactElement {
     }
     
     return (
-        <div>
+        <div className="ruleBody">
             <h3>{header}</h3>
             {body}
         </div>
