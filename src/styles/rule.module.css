@@ -3,3 +3,8 @@
     border-style: solid;
     border: black;
 }
+
+.ruleContainer {
+    border: solid;
+    border-color: black;
+}

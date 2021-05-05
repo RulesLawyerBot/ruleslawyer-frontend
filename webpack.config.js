@@ -40,7 +40,7 @@ module.exports = {
             },
             {
               test: /\.css$/i,
-              use: ['style-loader', 'typings-for-css-modules-loader'],
+              use: ['style-loader', 'css-loader'],
             }
           ]
     }

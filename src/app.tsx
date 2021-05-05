@@ -5,6 +5,7 @@ import { Fragment } from 'react'
 
 import SearchBox from './components/searchBox'
 import RuleDisplay from './components/ruleDisplay'
+import ResultsList from './components/resultsList'
 
 interface State {
     displayedRules: RuleData[],
@@ -61,9 +62,7 @@ export class App extends React.Component<{}, State> {
             <Fragment>
                 <SearchBox onSubmit={this.getRules.bind(this)}/>
                 <h5>{this.state.statusMessage}</h5>
-                <div id="results">
-                    {this.state.displayedRules.map((rule: RuleData, index: number) => <RuleDisplay key={index.toString()} rule={rule}/>)}
-                </div>
+                <ResultsList rules={this.state.displayedRules}/>
             </Fragment>
         )
     }
