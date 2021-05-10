@@ -7,6 +7,8 @@ import SearchBox from './components/searchBox'
 import RuleDisplay from './components/ruleDisplay'
 import ResultsList from './components/resultsList'
 
+import * as sampleData from '../sampleData.json'
+
 interface State {
     displayedRules: RuleData[],
     statusMessage: string
@@ -32,10 +34,7 @@ export interface RuleData{
 
 export class App extends React.Component<{}, State> {
 
-    state: State = {
-        displayedRules: [],
-        statusMessage: null
-    }
+    state: State = sampleData as State
 
     private async getRules(query: string): Promise<void> {
         let url: URL = new URL("http://ruleslawyer-api.herokuapp.com/api/search")

@@ -1,0 +1,133 @@
+{
+    "displayedRules": [
+        {
+            "text": "4.8.  Unsporting Conduct - Cheating ",
+            "subRules": [
+                {
+                    "parentText": "4.8.  Unsporting Conduct - Cheating ",
+                    "text": "Penalty",
+                    "subRules": [
+                        {
+                            "parentText": "4.8.  Unsporting Conduct - Cheating  Penalty",
+                            "text": "Disqualification",
+                            "subRules": [],
+                            "ruleSource": "IPG"
+                        }
+                    ],
+                    "ruleSource": "IPG"
+                },
+                {
+                    "parentText": "4.8.  Unsporting Conduct - Cheating ",
+                    "text": "Definition",
+                    "subRules": [
+                        {
+                            "parentText": "4.8.  Unsporting Conduct - Cheating  Definition",
+                            "text": "A person breaks a rule defined by the tournament documents, lies to a tournament official, or notices an offense committed in their (or a teammate's) match and does not call attention to it.",
+                            "subRules": [],
+                            "ruleSource": "IPG"
+                        },
+                        {
+                            "parentText": "4.8.  Unsporting Conduct - Cheating  Definition",
+                            "text": "Additionally, the offense must meet the following criteria for it to be considered Cheating:",
+                            "subRules": [],
+                            "ruleSource": "IPG"
+                        },
+                        {
+                            "parentText": "4.8.  Unsporting Conduct - Cheating  Definition",
+                            "text": "* The player must be attempting to gain advantage from their action.",
+                            "subRules": [],
+                            "ruleSource": "IPG"
+                        },
+                        {
+                            "parentText": "4.8.  Unsporting Conduct - Cheating  Definition",
+                            "text": "* The player must be aware that they are doing something illegal.",
+                            "subRules": [],
+                            "ruleSource": "IPG"
+                        },
+                        {
+                            "parentText": "4.8.  Unsporting Conduct - Cheating  Definition",
+                            "text": "If all criteria are not met, the offense is not Cheating and is handled by a different infraction.",
+                            "subRules": [],
+                            "ruleSource": "IPG"
+                        },
+                        {
+                            "parentText": "4.8.  Unsporting Conduct - Cheating  Definition",
+                            "text": "Cheating will often appear on the surface as a Game Play Error or Tournament Error, and must be investigated by the judge to make a determination of intent and awareness.",
+                            "subRules": [],
+                            "ruleSource": "IPG"
+                        }
+                    ],
+                    "ruleSource": "IPG"
+                }
+            ],
+            "ruleSource": "IPG"
+        },
+        {
+            "text": "5.1 Cheating ",
+            "subRules": [
+                {
+                    "parentText": "5.1 Cheating ",
+                    "text": "Cheating will not be tolerated. The Head Judge reviews all cheating allegations, and if they believe that a player has cheated, they will issue the appropriate penalty based on the Infraction Procedure Guide or Judging at Regular Rules Enforcement Level document. All disqualifications are subject to DCI review and further penalties may be assessed. ",
+                    "subRules": [],
+                    "ruleSource": "MTR"
+                }
+            ],
+            "ruleSource": "MTR"
+        },
+        {
+            "parentText": "3. TOURNAMENT ERRORS",
+            "text": "Tournament errors are violations of the Magic Tournament Rules. If the judge believes that the error was intentional, they should consider Unsporting Conduct - Cheating.",
+            "subRules": [],
+            "ruleSource": "IPG"
+        },
+        {
+            "parentText": "4.5 Triggered Abilities ",
+            "text": "Players are expected to remember their own triggered abilities; intentionally ignoring one is Cheating. Players are not required to point out the existence of triggered abilities that they do not control, though they may do so if they wish. ",
+            "subRules": [],
+            "ruleSource": "MTR"
+        },
+        {
+            "parentText": "2. GAME PLAY ERRORS",
+            "text": "Most Game Play Error infractions are assumed to have been committed unintentionally. If the judge believes that the error was intentional, they should first consider whether an Unsporting Conduct - Cheating infraction has occurred.",
+            "subRules": [],
+            "ruleSource": "IPG"
+        },
+        {
+            "parentText": "4.4.  Unsporting Conduct - Bribery and Wagering  Definition",
+            "text": "If the player was aware that what they were doing was against the rules, the infraction is Unsporting Conduct - Cheating.",
+            "subRules": [],
+            "ruleSource": "IPG"
+        },
+        {
+            "parentText": "4.3.  Unsporting Conduct - Improperly Determining a Winner  Definition",
+            "text": "If the player was aware that what they were doing was against the rules, the infraction is Unsporting Conduct - Cheating.",
+            "subRules": [],
+            "ruleSource": "IPG"
+        },
+        {
+            "parentText": "2.6.  Game Play Error - Failure to Maintain Game State  Definition",
+            "text": "A player allows another player in the game to commit a Game Play Error and does not point it out immediately. If a judge believes a player is intentionally not pointing out other players' illegal actions, either for their own advantage, or in the hope of bringing it up at a more strategically advantageous time, they should consider an Unsporting Conduct - Cheating infraction. Not reminding an opponent about their triggered abilities is never Failure to Maintain Game State nor Cheating.",
+            "subRules": [],
+            "ruleSource": "IPG"
+        },
+        {
+            "parentText": "2.2.  Game Play Error - Looking at Extra Cards  Philosophy",
+            "text": "Players should not use this penalty to get a �free shuffle� or to attempt to shuffle away cards they don't want to draw; doing so may be Unsporting Conduct - Cheating. Players also are not allowed to use this penalty as a stalling mechanism. The library is already randomized, so shuffling in the revealed cards should not involve excessive effort.",
+            "subRules": [],
+            "ruleSource": "IPG"
+        },
+        {
+            "parentText": "3.5.  Tournament Error - Deck Problem  Philosophy",
+            "text": "The most common forms of deck error are failure to desideboard and having a card in the wrong deck. Both of these are difficult to gain advantage from without obvious cheating. Allowing the opponent to choose which card they would otherwise be working with is sufficient to compensate for the easily discovered situations. Duplicates of cards that begin in the main deck are more problematic, as they are not as easy to realize and catch, and thus mandate an upgraded penalty.",
+            "subRules": [],
+            "ruleSource": "IPG"
+        },
+        {
+            "parentText": "2.1.  Game Play Error - Missed Trigger  Philosophy",
+            "text": "Triggered abilities are common and invisible, so players should not be harshly penalized when forgetting about one. Players are expected to remember their own triggered abilities; intentionally ignoring one may be Unsporting Conduct - Cheating (unless the ability would have no impact on the game as described above). Even if an opponent is involved in the announcement or resolution of the ability, the controller is still responsible for ensuring the opponents make the appropriate choices and take the appropriate actions. Opponents are not required to point out triggered abilities that they do not control, though they may do so if they wish.",
+            "subRules": [],
+            "ruleSource": "IPG"
+        }
+    ],
+    "statusMessage": "Showing 11 results for \"cheating\"."
+}
