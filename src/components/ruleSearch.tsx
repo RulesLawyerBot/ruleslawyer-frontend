@@ -1,17 +1,20 @@
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
 
 import { Fragment } from 'react'
 
-import SearchBox from './components/searchBox'
-import RuleDisplay from './components/ruleDisplay'
-import ResultsList from './components/resultsList'
+import SearchBox from './searchBox'
+import RuleDisplay from './ruleDisplay'
+import ResultsList from './resultsList'
 
-import * as sampleData from '../sampleData.json'
+import * as sampleData from '../../sampleData.json'
 
 interface State {
     displayedRules: RuleData[],
     statusMessage: string
+}
+
+interface Props {
+    
 }
 
 interface RLReturnData {
@@ -32,7 +35,7 @@ export interface RuleData{
     text: string
 }
 
-export class App extends React.Component<{}, State> {
+export class RuleSearch extends React.Component<{}, State> {
 
     state: State = sampleData as State
 
@@ -68,4 +71,4 @@ export class App extends React.Component<{}, State> {
 
 }
 
-export const render = (): void => { ReactDOM.render(<App/>, document.getElementById('react-app-root')) }
+export default RuleSearch

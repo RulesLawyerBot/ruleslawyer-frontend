@@ -11,7 +11,8 @@ module.exports = {
     devtool: 'source-map',
     devServer: {
         contentBase: path.join(__dirname, 'dist/client'),
-        port: 9000
+        port: 9000,
+        historyApiFallback: true
     },
     plugins: [
         new HtmlWebpackPlugin({
