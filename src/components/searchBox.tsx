@@ -1,41 +1,32 @@
 import * as React from 'react'
+import { useHistory } from 'react-router-dom'
 
-interface Props {
-    onSubmit: (searchString: string) => void
-}
+const SearchBox: React.FunctionComponent<{}> = (): React.ReactElement => {
+    const [value, setValue] = React.useState<string>('')
+    const history = useHistory()
 
-interface State {
-    query: string
-}
-
-export default class SearchBox extends React.Component<Props, State> {
-    state = {
-        query: ""
+    function onChange(event: React.FormEvent<HTMLInputElement>): void {
+        setValue(event.currentTarget.value)
     }
 
-    private handleChange(event: React.FormEvent<HTMLInputElement>): void{
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>): void {
         event.preventDefault()
-        this.setState({query: event.currentTarget.value})
+
+        let search: URLSearchParams = new URLSearchParams()
+        search.append('q', value)
+
+        history.push(`/search?${search.toString()}`)
     }
 
-    private handleSubmit(event: React.FormEvent<HTMLInputElement>): void {
-        event.preventDefault()
-        this.props.onSubmit(this.state.query)
-        this.setState({query: ""})
-    }
-
-    render(): React.ReactElement {
-        return(
-            <form onSubmit={this.handleSubmit.bind(this)}>            
-                <input type="text"
-                    placeholder="enter search terms"
-                    value={this.state.query}
-                    onChange={this.handleChange.bind(this)}
-                /> 
-                <button type="submit">Search</button>
-            </form>
-
-        )
-    }
-    
+    return(
+        <form onSubmit={handleSubmit}>
+            <input type="text"
+            placeholder="Search"
+            value={value}
+            onChange={onChange}/>
+            <button type="submit">Search</button>
+        </form>
+    )
 }
+
+export default SearchBox

@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import RuleDisplay from './ruleDisplay'
-import { RuleData } from './ruleSearch'
+import { RuleData } from './searchPage'
 
 import CSS from '../styles/resultList.module.css'
 
@@ -9,7 +9,7 @@ interface Props {
     rules: RuleData[]
 }
 
-function ResultsList(props: Props): React.ReactElement {
+const ResultsList: React.FunctionComponent<Props> = (props: Props): React.ReactElement => {
     let { rules } = props
 
     return(

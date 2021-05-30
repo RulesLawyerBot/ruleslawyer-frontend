@@ -2,18 +2,8 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Switch, Route, useLocation } from 'react-router-dom'
 
-import RuleSearch from './ruleSearch'
-
-function Blargle(): React.ReactElement {
-    let location = useLocation()
-
-    console.log('blargel')
-    return(
-        <div>
-            {location.pathname}
-        </div>
-    )
-}
+import SearchPage from './searchPage'
+import MainPage from './mainPage'
 
 export function App(): React.ReactElement {
     return(
@@ -21,10 +11,10 @@ export function App(): React.ReactElement {
             <Router>
                 <Switch>
                     <Route exact path="/">
-                        <h1>I LOVE MY WIFE</h1>
+                        <MainPage/>
                     </Route>
                     <Route path="/search">
-                        <RuleSearch/>
+                        <SearchPage/>
                     </Route>
                 </Switch>
             </Router>
