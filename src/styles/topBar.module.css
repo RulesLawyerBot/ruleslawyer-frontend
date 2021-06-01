@@ -1,0 +1,23 @@
+.topBar {
+    height: 4vh;
+    /* border: solid black; */
+    background: lightpink;
+}
+
+/* .topBar a {
+    float: right;
+}
+.topBar a:first-child {
+    float: left;
+} */
+
+.topBarLink {
+    float: right;
+    padding-left: .5em;
+    padding-right: .5em;
+    padding-top: .25em;
+}
+
+.topBarLink:first-child {
+    float: left
+}

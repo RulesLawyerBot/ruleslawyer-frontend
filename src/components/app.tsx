@@ -4,11 +4,13 @@ import { BrowserRouter as Router, Switch, Route, useLocation } from 'react-route
 
 import SearchPage from './searchPage'
 import MainPage from './mainPage'
+import TopBar from './topBar'
 
 export function App(): React.ReactElement {
     return(
         <div>
             <Router>
+                <TopBar/>
                 <Switch>
                     <Route exact path="/">
                         <MainPage/>
