@@ -1,23 +1,30 @@
 .topBar {
-    height: 4vh;
-    /* border: solid black; */
-    background: lightpink;
+    /* height: 4vh; */
+    border-bottom: 2px solid black;
+    background: lightblue;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    text-align: right;
 }
-
-/* .topBar a {
-    float: right;
-}
-.topBar a:first-child {
-    float: left;
-} */
 
 .topBarLink {
-    float: right;
+    /* float: right; */
     padding-left: .5em;
     padding-right: .5em;
-    padding-top: .25em;
 }
 
 .topBarLink:first-child {
     float: left
+}
+
+.topBar a {
+    text-decoration: none;
+}
+
+.topBar a:visited,.topBar a:link {
+    color: blue;
+}
+
+.topBar a:hover {
+    text-decoration: underline;
 }

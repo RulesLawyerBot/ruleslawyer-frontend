@@ -6,15 +6,16 @@ import { RuleData } from './searchPage'
 import CSS from '../styles/resultList.module.css'
 
 interface Props {
-    rules: RuleData[]
+    rules: RuleData[],
+    keywords: string[]
 }
 
 const ResultsList: React.FunctionComponent<Props> = (props: Props): React.ReactElement => {
-    let { rules } = props
+    let { rules, keywords } = props
 
     return(
         <div className={CSS.resultList}>
-            {rules.map((rule: RuleData, index: number) => <RuleDisplay key={index.toString()} rule={rule}/>)}
+            {rules.map((rule: RuleData, index: number) => <RuleDisplay key={index.toString()} rule={rule} keywords={keywords} linkToRule={true}/>)}
         </div>
     )
 }

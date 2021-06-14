@@ -3,15 +3,22 @@ import { RuleData } from './searchPage'
 import { Fragment } from 'react'
 
 import CSS from '../styles/rule.module.css'
+import { Link } from 'react-router-dom'
 
 interface Props {
-    rule: RuleData
+    rule: RuleData,
+    keywords?: string[],
+    linkToRule?: boolean
 }
 
-function RuleDisplay(props: Props): React.ReactElement {
-    const { parentText, subRules, ruleSource, text }: RuleData = props.rule
+const RuleDisplay: React.FunctionComponent<Props> = ({rule, keywords = [], linkToRule=false}: Props): React.ReactElement => {
+    const { subRules, ruleSource, text, parentIndices, ruleIndex }: RuleData = rule
+
+    console.log(rule)
     
-    let header: string = parentText? parentText: text
+    let index: number = parentIndices.length > 0 ? parentIndices[parentIndices.length - 1] : ruleIndex
+
+    let header: string = rule.parentText? rule.parentText: text
 
     let body: React.ReactElement
 
@@ -36,7 +43,7 @@ function RuleDisplay(props: Props): React.ReactElement {
     
     return (
         <div className={`${CSS.ruleBody} ${CSS.ruleContainer}`}>
-            <h3>{header}</h3>
+            <h3>{linkToRule ? <Link to={`/rule/${index}`}>{header}</Link> : header}</h3>
             {body}
         </div>
     )

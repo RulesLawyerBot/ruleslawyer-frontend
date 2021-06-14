@@ -16,6 +16,8 @@ interface RLReturnData {
 }
 
 export interface RuleData{
+    parentIndices: number[],
+    ruleIndex: number,
     parentText: string,
     ruleSource: string,
     subRules: RuleData[],
@@ -30,6 +32,7 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
     const [query] = useQuery()
     const [rules, setRules] = useState<RuleData[]>([])
     const [message, setMessage] = useState<string>('')
+    const [keywords, setKeywords] = useState<string[]>([])
 
     const fetchRules = async () => {
 
@@ -56,6 +59,7 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
             let newRules: RuleData[] = data.rules
             setRules(data.rules)
             setMessage(`Showing ${data.rules.length} results for ${query}`)
+            setKeywords(data.request.keywords)
         } else {
             setMessage(`Search for ${query} returned no results`)
         }
@@ -70,7 +74,7 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
     return (
         <div>
             <SearchBox/>
-            <ResultsList rules={rules}/>
+            <ResultsList rules={rules} keywords={keywords}/>
         </div>
     )
 }
