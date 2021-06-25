@@ -4,6 +4,8 @@ import SearchBox from './searchBox'
 
 import CSS from '../styles/mainPage.module.css'
 
+import Highlighted from './highlighted'
+
 const MainPage: React.FunctionComponent<{}> = (): React.ReactElement => {
     return(
         <div className={CSS.mainPage}>

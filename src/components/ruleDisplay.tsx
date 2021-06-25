@@ -5,6 +5,8 @@ import { Fragment } from 'react'
 import CSS from '../styles/rule.module.css'
 import { Link } from 'react-router-dom'
 
+import Highlighted from './highlighted'
+
 interface Props {
     rule: RuleData,
     keywords?: string[],
@@ -28,12 +30,12 @@ const RuleDisplay: React.FunctionComponent<Props> = ({rule, keywords = [], linkT
         body = <div>
             {subRules.map((rule: RuleData, index: number) => {
                 if(rule.subRules.length === 0){
-                    return <p key={index.toString()}>{rule.text}</p>
+                    return <p key={index.toString()}><Highlighted text={rule.text} keywords={keywords}/></p>
                 } else {
                     return (
                         <Fragment key={index.toString()}>
-                            <h4>{rule.text}</h4>
-                            {rule.subRules.map((subRule: RuleData, subIndex: number) => <p key={`sub${subIndex.toString()}`}>{subRule.text}</p>)}
+                            <h4><Highlighted text={rule.text} keywords={keywords}/></h4>
+                            {rule.subRules.map((subRule: RuleData, subIndex: number) => <p key={`sub${subIndex.toString()}`}><Highlighted text={subRule.text} keywords={keywords}/></p>)}
                         </Fragment>
                     )
                 }
@@ -43,7 +45,7 @@ const RuleDisplay: React.FunctionComponent<Props> = ({rule, keywords = [], linkT
     
     return (
         <div className={`${CSS.ruleBody} ${CSS.ruleContainer}`}>
-            <h3>{linkToRule ? <Link to={`/rule/${index}`}>{header}</Link> : header}</h3>
+            <h3>{linkToRule ? <Link to={`/rule/${index}`}><Highlighted text={header} keywords={keywords}/></Link> : header}</h3>
             {body}
         </div>
     )

@@ -44,7 +44,7 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
         console.log('fetching rules')
         let url: URL = new URL("http://ruleslawyer-api.herokuapp.com/api/search")
         let params = {
-            keywords: query.split(' ').toString(),
+            keywords: query.split(' ').map(item => item.replace(/\W/g, '')).toString(),
         }
 
         console.log(params.keywords)
