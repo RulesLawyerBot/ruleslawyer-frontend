@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { useHistory } from 'react-router-dom'
 
+import CSS from '../styles/searchBar.module.css'
+
 const SearchBox: React.FunctionComponent<{}> = (): React.ReactElement => {
     const [value, setValue] = React.useState<string>('')
     const history = useHistory()
@@ -19,12 +21,12 @@ const SearchBox: React.FunctionComponent<{}> = (): React.ReactElement => {
     }
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={CSS.searchBar}>
             <input type="text"
             placeholder="Search"
             value={value}
             onChange={onChange}/>
-            <button type="submit">Search</button>
+            {/* <button type="submit">Search</button> */}
         </form>
     )
 }

@@ -41,30 +41,24 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
             return
         }
 
-        console.log('fetching rules')
         let url: URL = new URL("http://ruleslawyer-api.herokuapp.com/api/search")
         let params = {
             keywords: query.split(' ').map(item => item.replace(/\W/g, '')).toString(),
         }
 
-        console.log(params.keywords)
         url.search = new URLSearchParams(params).toString()
 
-        console.log(url.href)
         let response = await fetch(url.href)
         let body: any = await response.json()
         let data: RLReturnData = body as RLReturnData
 
         if(data.rules.length > 0) {
-            let newRules: RuleData[] = data.rules
             setRules(data.rules)
             setMessage(`Showing ${data.rules.length} results for ${query}`)
             setKeywords(data.request.keywords)
         } else {
             setMessage(`Search for ${query} returned no results`)
         }
-
-        console.log(data.rules)
     }
 
     useEffect((): void => {

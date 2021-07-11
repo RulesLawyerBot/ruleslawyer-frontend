@@ -14,10 +14,7 @@ interface Props {
 }
 
 const RuleDisplay: React.FunctionComponent<Props> = ({rule, keywords = [], linkToRule=false}: Props): React.ReactElement => {
-    const { subRules, ruleSource, text, parentIndices, ruleIndex }: RuleData = rule
-
-    console.log(rule)
-    
+    const { subRules, ruleSource, text, parentIndices, ruleIndex }: RuleData = rule    
     let index: number = parentIndices.length > 0 ? parentIndices[parentIndices.length - 1] : ruleIndex
 
     let header: string = rule.parentText? rule.parentText: text
@@ -25,27 +22,31 @@ const RuleDisplay: React.FunctionComponent<Props> = ({rule, keywords = [], linkT
     let body: React.ReactElement
 
     if(subRules.length === 0) {
-        body = <div><p>{text}</p></div>
+        body = <div><p className={CSS.indented}><Highlighted text={text} keywords={keywords}/></p></div>
     } else {
         body = <div>
             {subRules.map((rule: RuleData, index: number) => {
                 if(rule.subRules.length === 0){
-                    return <p key={index.toString()}><Highlighted text={rule.text} keywords={keywords}/></p>
+                    return <p className={CSS.indented} key={index.toString()}><Highlighted text={rule.text} keywords={keywords}/></p>
                 } else {
                     return (
                         <Fragment key={index.toString()}>
                             <h4><Highlighted text={rule.text} keywords={keywords}/></h4>
-                            {rule.subRules.map((subRule: RuleData, subIndex: number) => <p key={`sub${subIndex.toString()}`}><Highlighted text={subRule.text} keywords={keywords}/></p>)}
+                            <div className={CSS.indented}>
+                                {rule.subRules.map((subRule: RuleData, subIndex: number) => <p key={`sub${subIndex.toString()}`}><Highlighted text={subRule.text} keywords={keywords}/></p>)}
+                            </div>
                         </Fragment>
                     )
                 }
             })}
         </div>
     }
+
+    let highlightedHeader = <Highlighted text={header} keywords={keywords}/>
     
     return (
         <div className={`${CSS.ruleBody} ${CSS.ruleContainer}`}>
-            <h3>{linkToRule ? <Link to={`/rule/${index}`}><Highlighted text={header} keywords={keywords}/></Link> : header}</h3>
+            <h3>{linkToRule ? <Link to={`/rule/${index}`}>{highlightedHeader}</Link> : highlightedHeader}</h3>
             {body}
         </div>
     )

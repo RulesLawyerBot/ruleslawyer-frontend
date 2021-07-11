@@ -14,17 +14,19 @@ export function App(): React.ReactElement {
         <div className={CSS.app }>
             <Router>
                 <TopBar/>
-                <Switch>
-                    <Route exact path='/'>
-                        <MainPage/>
-                    </Route>
-                    <Route path='/search'>
-                        <SearchPage/>
-                    </Route>
-                    <Route exact path='/rule/' render={()=> <Link to='/rule/0'>Go to Rule</Link>}/>
-                    <Route path='/rule/:id' component={RulePage}/>
-                    <Route component={()=> <h1>NOT FOUND</h1>}/>
-                </Switch>
+                <div className={CSS.body}>
+                    <Switch>
+                        <Route exact path='/'>
+                            <MainPage/>
+                        </Route>
+                        <Route path='/search'>
+                            <SearchPage/>
+                        </Route>
+                        <Route exact path='/rule/' render={()=> <Link to='/rule/0'>Go to Rule</Link>}/>
+                        <Route path='/rule/:id' component={RulePage}/>
+                        <Route component={()=> <h1>NOT FOUND</h1>}/>
+                    </Switch>
+                </div>
             </Router>
         </div>
     )

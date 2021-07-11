@@ -1,7 +1,16 @@
 .ruleBody {
-    background-color: aliceblue;
+    background-color: white;
     border-style: solid;
     border: black;
+}
+
+.ruleBody a {
+    text-decoration: none;
+    color:black;
+}
+
+.ruleBody a:hover {
+    text-decoration: underline;
 }
 
 .ruleContainer {
@@ -10,4 +19,10 @@
     border-radius: 10px;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.indented {
+    margin-left: 0.75em;
+    padding-left: 0.25em;
+    border-left: 1px solid lightgrey;
 }

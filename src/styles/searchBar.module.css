@@ -1,0 +1,12 @@
+.searchBar input[type=text] {
+    padding: 8px;
+    border-radius: 4px;
+    border: 2px solid lightgrey;
+    outline: none;
+    transition: border .125s linear;
+    width: 90%
+}
+
+.searchBar input[type=text]:focus {
+    border: 2px solid rgb(54, 54, 54);
+}

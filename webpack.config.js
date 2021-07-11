@@ -6,12 +6,12 @@ module.exports = {
     entry: './src/index.ts',
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'dist/client'),
+        path: path.resolve(__dirname, 'dist'),
         publicPath: '/'
     },
     devtool: 'source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'dist/client'),
+        contentBase: path.join(__dirname, 'dist'),
         port: 9000,
         historyApiFallback: true
     },
@@ -43,6 +43,10 @@ module.exports = {
             {
               test: /\.css$/i,
               use: ['style-loader', 'css-loader'],
+            },
+            {
+              test: /\.svg$/i,
+              type: 'asset/resource'
             }
           ]
     }
