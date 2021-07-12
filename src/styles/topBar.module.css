@@ -1,14 +1,12 @@
 .topBar {
-    /* height: 4vh; */
     border-bottom: 2px solid black;
-    background: lightblue;
+    background: rgb(99, 102, 255);
     padding-top: .5em;
     padding-bottom: .5em;
     text-align: right;
 }
 
 .topBarLink {
-    /* float: right; */
     padding-left: .5em;
     padding-right: .5em;
 }
@@ -19,10 +17,11 @@
 
 .topBar a {
     text-decoration: none;
+    color: black;
 }
 
 .topBar a:visited,.topBar a:link {
-    color: blue;
+    color: black;
 }
 
 .topBar a:hover {

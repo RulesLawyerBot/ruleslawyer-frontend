@@ -5,6 +5,8 @@ import { useLocation } from 'react-router-dom'
 import SearchBox from './searchBox'
 import ResultsList from './resultsList'
 
+import CSS from '../styles/searchPage.module.css'
+
 interface RLReturnData {
     request: {
         pageNumber: number,
@@ -67,7 +69,9 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
 
     return (
         <div>
-            <SearchBox/>
+            <div className={CSS.searchBar}>
+                <SearchBox/>
+            </div>
             <ResultsList rules={rules} keywords={keywords}/>
         </div>
     )
