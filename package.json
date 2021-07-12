@@ -4,8 +4,9 @@
   "description": "frontend for ruleslawyer",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf dist; webpack --mode development",
-    "start": "webpack serve --mode development"
+    "build": "rm -rf deploy/dist; webpack --mode development",
+    "devserver": "webpack serve --mode development",
+    "start": "npm run build; node server.js"
   },
   "author": "",
   "license": "ISC",
