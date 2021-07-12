@@ -1,0 +1,29 @@
+.navLink {
+    text-decoration: none;
+    color: black;
+    font-size: larger;
+}
+
+.navLink a:visited {
+    color: black;
+}
+
+.navLink:hover {
+    text-decoration: underline;
+}
+
+.navLinkContainer {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: right;
+}
+
+.navLink:first-child {
+    float: left;
+}
+
+.rulePage {
+    /* padding-top: 1em; */
+}

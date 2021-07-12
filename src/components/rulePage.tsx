@@ -1,10 +1,12 @@
 import * as React from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 import RuleDisplay from './ruleDisplay'
 
 import { RuleData } from './searchPage'
+
+import CSS from '../styles/rulePage.module.css'
 
 const RulePage: React.FunctionComponent = (): React.ReactElement => {
 
@@ -38,11 +40,34 @@ const RulePage: React.FunctionComponent = (): React.ReactElement => {
     useEffect((): void => {
         fetchRule()
     }, [id])
-    return(
-        <div>
-            { rule ? <RuleDisplay rule={rule}/> : <div>{error ? <h4>Rule {id} not found.</h4> : null}</div>}
-        </div>
-    )
+
+
+    // return(
+    //     <div>
+    //         { rule ? <RuleDisplay rule={rule}/> : <div>{error ? <h4>Rule {id} not found.</h4> : null}</div>}
+    //     </div>
+    // )
+
+    if(rule) {
+        return(
+            <div className={CSS.rulePage}>
+                <div className={CSS.navLinkContainer}>
+                    <Link to={`/rule/${rule.previousIndex}`} className={CSS.navLink}>{'< Previous'}</Link>
+                    <Link to={`/rule/${rule.nextIndex}`} className={CSS.navLink}>{'Next >'}</Link>
+                </div>
+                <RuleDisplay rule={rule}/>
+            </div>
+        )
+    } else if (error) {
+        return (
+            <div className={CSS.rulePage}>
+                <h4>Rule {id} not found.</h4>
+            </div>
+        )
+    } else {
+        return <div></div>
+    }
+
 }
 
 export default RulePage

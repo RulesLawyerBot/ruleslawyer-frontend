@@ -23,7 +23,9 @@ export interface RuleData{
     parentText: string,
     ruleSource: string,
     subRules: RuleData[],
-    text: string
+    text: string,
+    previousIndex: number,
+    nextIndex: number
 }
 
 const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
