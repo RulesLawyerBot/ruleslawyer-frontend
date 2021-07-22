@@ -17,7 +17,6 @@ const RulePage: React.FunctionComponent = (): React.ReactElement => {
 
     const fetchRule = async () => {
         setError(null)
-        console.log(`getting rule ${id}`)
         let url: URL = new URL("https://ruleslawyer-api.herokuapp.com/api/citation")
         let params = {
             index: id

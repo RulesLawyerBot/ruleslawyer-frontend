@@ -6,6 +6,7 @@ import SearchPage from './searchPage'
 import MainPage from './mainPage'
 import TopBar from './topBar'
 import RulePage from './rulePage'
+import Glossary from './glossary'
 
 import CSS from '../styles/app.module.css'
 
@@ -22,8 +23,10 @@ export function App(): React.ReactElement {
                         <Route path='/search'>
                             <SearchPage/>
                         </Route>
-                        <Route exact path='/rule/' render={()=> <Link to='/rule/0'>Go to Rule</Link>}/>
+                        {/* <Route exact path='/rule/' render={()=> <Link to='/rule/0'>Go to Rule</Link>}/> */}
                         <Route path='/rule/:id' component={RulePage}/>
+                        <Route exact path='/glossary/' component={Glossary}/>
+                        <Route path='/glossary/:id' component={Glossary}/>
                         <Route component={()=> <h1>NOT FOUND</h1>}/>
                     </Switch>
                 </div>

@@ -1,0 +1,8 @@
+.sidebarItem {
+    text-decoration: none;
+    color: black;
+}
+
+.itemSelected {
+    background-color: lightseagreen;
+}
