@@ -5,10 +5,13 @@
 html, body {
     margin: 0;
     padding: 0;
-    background: aliceblue;
+    height: 100%;
+    background-image: linear-gradient(rgb(103, 183, 255), rgb(179, 219, 255));
 }
 
 .body {
     margin-left: 3em;
     margin-right: 3em;
+    margin: auto;
+    max-width: 1000px;
 }
