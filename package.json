@@ -6,6 +6,7 @@
   "scripts": {
     "build": "rm -rf dist; webpack --mode development",
     "devserver": "webpack serve --mode development",
+    "windows-devserver": "node_modules/.bin/webpack serve --mode development",
     "start": "node server.js"
   },
   "author": "",

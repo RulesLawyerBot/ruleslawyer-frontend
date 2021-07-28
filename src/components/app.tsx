@@ -7,6 +7,8 @@ import MainPage from './mainPage'
 import TopBar from './topBar'
 import RulePage from './rulePage'
 import Glossary from './glossary'
+import NotFound from "./notfound"
+import About from "./about"
 
 import CSS from '../styles/app.module.css'
 
@@ -27,7 +29,8 @@ export function App(): React.ReactElement {
                         <Route path='/rule/:id' component={RulePage}/>
                         <Route exact path='/glossary/' component={Glossary}/>
                         <Route path='/glossary/:id' component={Glossary}/>
-                        <Route component={()=> <h1>NOT FOUND</h1>}/>
+                        <Route path="/about" component={About}/>
+                        <Route component={NotFound}/>
                     </Switch>
                 </div>
             </Router>
