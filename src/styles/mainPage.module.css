@@ -6,3 +6,15 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.mainPage a {
+    color: black;
+}
+
+.mainPage a:visited {
+    color: black;
+}
+
+.mainPage a:hover {
+    color: blue;
+}

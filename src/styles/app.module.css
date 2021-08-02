@@ -1,5 +1,9 @@
 .app {
     font-family: "Helvetica";
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 html, body {
@@ -7,11 +11,23 @@ html, body {
     padding: 0;
     height: 100%;
     background-image: linear-gradient(rgb(103, 183, 255), rgb(179, 219, 255));
+    background-attachment: fixed;
 }
 
 .body {
-    margin-left: 3em;
-    margin-right: 3em;
-    margin: auto;
-    max-width: 1000px;
+    margin-left: 13vw;
+    margin-right: 13vw;
+    flex-grow: 1;
+}
+
+a {
+    color: black;
+}
+
+a:visited {
+    color: black;
+}
+
+a:hover {
+    color: blue;
 }

@@ -4,6 +4,14 @@
     border: black;
 }
 
+.ruleHeader {
+    font-size: larger;
+    font-weight: bold;
+    padding-bottom: 10px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid black;
+}
+
 .ruleBody a {
     text-decoration: none;
     color:black;

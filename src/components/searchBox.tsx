@@ -26,7 +26,6 @@ const SearchBox: React.FunctionComponent<{}> = (): React.ReactElement => {
             placeholder="Search"
             value={value}
             onChange={onChange}/>
-            {/* <button type="submit">Search</button> */}
         </form>
     )
 }

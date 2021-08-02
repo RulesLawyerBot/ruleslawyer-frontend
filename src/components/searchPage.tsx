@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom'
 
 import SearchBox from './searchBox'
 import ResultsList from './resultsList'
+import HomeButton from './homeButton'
 
 import CSS from '../styles/searchPage.module.css'
 
@@ -72,6 +73,7 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
     return (
         <div>
             <div className={CSS.searchBar}>
+                <HomeButton/>
                 <SearchBox/>
             </div>
             <ResultsList rules={rules} keywords={keywords}/>

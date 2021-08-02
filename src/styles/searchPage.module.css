@@ -1,4 +1,7 @@
 .searchBar {
-    margin-top: .5em;
-    width: 35%;
+    padding-top: .75em;
+    width: 45%;
+    height: 5vh;
+    display: flex;
+    gap: 5px;
 }

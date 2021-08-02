@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 import RuleDisplay from './ruleDisplay'
+import HomeButton from './homeButton'
 
 import { RuleData } from './searchPage'
 
@@ -52,6 +53,7 @@ const RulePage: React.FunctionComponent = (): React.ReactElement => {
             <div className={CSS.rulePage}>
                 <div className={CSS.navLinkContainer}>
                     <Link to={`/rule/${rule.previousIndex}`} className={CSS.navLink}>{'< Previous'}</Link>
+                    <HomeButton/>
                     <Link to={`/rule/${rule.nextIndex}`} className={CSS.navLink}>{'Next >'}</Link>
                 </div>
                 <RuleDisplay rule={rule}/>

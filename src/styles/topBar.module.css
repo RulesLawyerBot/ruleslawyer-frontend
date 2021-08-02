@@ -1,10 +1,13 @@
 .topBar {
     border-bottom: 2px solid black;
     background: rgb(99, 102, 255);
-    padding-top: .5em;
-    padding-bottom: .5em;
+    /* padding-top: .5em; */
+    /* padding-bottom: .5em; */
     text-align: right;
     width: 100% !important;
+    position: fixed;
+    top: 0;
+    height: 5vh;
 }
 
 .topBarLink {
