@@ -4,7 +4,6 @@ import { Link, useRouteMatch } from 'react-router-dom'
 
 import CSS from '../styles/topBar.module.css'
 
-
 const TopBar: React.FunctionComponent<{}> = (): React.ReactElement => {
 
     let shouldRender = !useRouteMatch('/').isExact

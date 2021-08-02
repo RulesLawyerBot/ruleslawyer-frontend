@@ -1,0 +1,12 @@
+/* CSS for about and bot pages */
+
+.textBody {
+    background-color: white;
+    border-style: solid;
+    border: black;
+    border: solid;
+    border-color: black;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
