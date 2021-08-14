@@ -42,11 +42,15 @@ const RuleDisplay: React.FunctionComponent<Props> = ({rule, keywords = [], linkT
         </div>
     }
 
-    let highlightedHeader = <Highlighted text={header} keywords={keywords}/>
+    header = header.trimEnd()
+    // let highlightedHeader = <Highlighted text={header} keywords={[]}/>
     
     return (
         <div className={`${CSS.ruleBody} ${CSS.ruleContainer}`}>
-            <h2 className={CSS.ruleHeader}>{linkToRule ? <Link to={`/rule/${index}`}>{highlightedHeader}</Link> : highlightedHeader}</h2>
+            <h2 className={CSS.ruleHeader}>
+                <span className={CSS.ruleSource}>{ruleSource}</span>
+                {linkToRule ? <Link to={`/rule/${index}`}>{header}</Link> : header}
+            </h2>
             {body}
         </div>
     )

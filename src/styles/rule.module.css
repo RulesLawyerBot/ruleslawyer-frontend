@@ -17,6 +17,16 @@
     color:black;
 }
 
+.ruleBody a:after {
+    content: "";
+    background-image: url('../../assets/link_icon.png');
+    background-size: 12px 12px;
+    height: 12px;
+    width: 12px;
+    display: inline-block;
+    margin-left: 5px;
+}
+
 .ruleBody a:hover {
     text-decoration: underline;
 }
@@ -33,4 +43,10 @@
     margin-left: 0.75em;
     padding-left: 0.25em;
     border-left: 1px solid lightgrey;
+}
+
+.ruleSource {
+    margin-right: 0.5em;
+    font-weight: normal;
+    color: lightgrey;
 }
