@@ -10,9 +10,9 @@ const BotsPage: React.FunctionComponent<{}> = (): React.ReactElement => {
             <div className={CSS.textBody}>
                 <h2>Discord</h2>
                 <p>The RulesLawyer discord bot is the original version of RulesLawyer. Like the website, it supports advanced rule searching, and it also supports card search.</p>
-                <form action="https://discordapp.com/oauth2/authorize?client_id=590184543684788253&scope=bot&permissions=2147838016">
-                    <input type="submit" value="Add to your Discord server!"></input>
-                </form>
+                <a href="https://discordapp.com/oauth2/authorize?client_id=590184543684788253&scope=bot&permissions=2147838016&scope=applications.commands%20bot">
+                    <button>Add to your Discord server!</button>
+                </a>
                 <h2>Slack</h2>
                 <p>The Slack bot is still under development. If you would like to have access to the current development version of the bot, please <a href="https://twitter.com/RulesLawyerBot">contact us</a>.</p>
             </div>
