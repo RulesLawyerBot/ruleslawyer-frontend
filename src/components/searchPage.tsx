@@ -38,6 +38,7 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
     const [rules, setRules] = useState<RuleData[]>([])
     const [message, setMessage] = useState<string>('')
     const [keywords, setKeywords] = useState<string[]>([])
+    const [loading, setLoading] = useState<boolean>(false)
 
     const fetchRules = async () => {
 
@@ -46,21 +47,32 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
             return
         }
 
+        setLoading(true)
+        setRules([])
+
         let url: URL = new URL("https://ruleslawyer-api.herokuapp.com/api/search")
         let params = {
             keywords: query.split(' ').toString(),
         }
 
         url.search = new URLSearchParams(params).toString()
+        console.log(url.toString())
 
-        let response = await fetch(url.href)
+        let response = await fetch(url.href)        
+        if(response.status != 200) {
+            setMessage(`The server returned an error. (Error code ${response.status})`)
+            setLoading(false)
+            return
+        }
+
         let body: any = await response.json()
         let data: RLReturnData = body as RLReturnData
 
         if(data.rules.length > 0) {
             setRules(data.rules)
-            setMessage(`Showing ${data.rules.length} results for ${query}`)
+            setMessage(`Showing ${data.rules.length} results for ${query}.`)
             setKeywords(data.request.keywords)
+            setLoading(false)
         } else {
             setMessage(`Search for ${query} returned no results`)
         }
@@ -72,11 +84,15 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
 
     return (
         <div>
-            <div className={CSS.searchBar}>
+            <div className={CSS.searchBarContainer}>
                 <HomeButton/>
                 <SearchBox/>
             </div>
-            <ResultsList rules={rules} keywords={keywords}/>
+            <div className={CSS.body}>
+                {/* {message? message : null} */}
+                {loading? <div className={CSS.loading}><div className={CSS.loadingAnimation}></div><div className={CSS.loadingText}>Loading</div></div>: null}
+                <ResultsList rules={rules} keywords={keywords}/>
+            </div>
         </div>
     )
 }

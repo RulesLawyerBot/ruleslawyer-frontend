@@ -32,7 +32,7 @@ export function App(): React.ReactElement {
                         <Route path='/glossary/:id' component={Glossary}/>
                         <Route path='/about' component={About}/>
                         <Route path='/bots' component={BotsPage}/>
-                        <Route component={NotFound}/>
+                        <Route path='*'component={NotFound}/>
                     </Switch>
                 </div>
                 <Footer/>

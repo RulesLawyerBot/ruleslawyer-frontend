@@ -53,7 +53,9 @@ const RulePage: React.FunctionComponent = (): React.ReactElement => {
             <div className={CSS.rulePage}>
                 <div className={CSS.navLinkContainer}>
                     <Link to={`/rule/${rule.previousIndex}`} className={CSS.navLink}>{'< Previous'}</Link>
-                    <HomeButton/>
+                    <div className={CSS.navLinkHome}>
+                        <HomeButton/>
+                    </div>
                     <Link to={`/rule/${rule.nextIndex}`} className={CSS.navLink}>{'Next >'}</Link>
                 </div>
                 <RuleDisplay rule={rule}/>

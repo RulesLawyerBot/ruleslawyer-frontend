@@ -15,9 +15,16 @@ html, body {
 }
 
 .body {
-    margin-left: 13vw;
-    margin-right: 13vw;
     flex-grow: 1;
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
+
+@media screen and (min-width: 992px) {
+    .body {
+        margin-left: 13vw;
+        margin-right: 13vw;
+    }
 }
 
 a {
