@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { RuleData } from './searchPage'
 
 import GlossarySidebar from './glossarySidebar'
+import Expandable from './expandable'
 
 import CSS from '../styles/glossary.module.css'
 
@@ -78,7 +79,7 @@ const Glossary: React.FunctionComponent = (): React.ReactElement => {
     let currentDocItems: Map<number, RuleDataIncomplete> = rules.get(currentDoc)
     if(currentDocItems) {
         currentDocItems.forEach((rule: RuleDataIncomplete) => {
-            ruleElements.push(<h5 key={rule.ruleIndex}>{rule.text}</h5>)
+            ruleElements.push(<Expandable label={rule.text} key={rule.ruleIndex} contents={<div>currently empty</div>}/>)
         }) 
     }
 
