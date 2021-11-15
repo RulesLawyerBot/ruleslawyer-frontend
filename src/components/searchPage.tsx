@@ -52,6 +52,7 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
         }
 
         url.search = new URLSearchParams(params).toString()
+        console.log(url.toString())
 
         let response = await fetch(url.href)
         let body: any = await response.json()
@@ -72,7 +73,7 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
 
     return (
         <div>
-            <div className={CSS.searchBar}>
+            <div className={CSS.searchBarContainer}>
                 <HomeButton/>
                 <SearchBox/>
             </div>

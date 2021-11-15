@@ -5,6 +5,10 @@
     margin-top: 1.5vh;
 }
 
+.navLink:last-child {
+    text-align: right;
+}
+
 .navLink a:visited {
     color: black;
 }
@@ -16,10 +20,16 @@
 .navLinkContainer {
     margin: 5px;
     display: flex;
-    justify-content: space-between;
+    /* flex-grow: 1; */
+    /* justify-content: space-between; */
     height: 6vh;
 }
 
+.navLinkContainer * {
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
 .navLinkHome {
-    height: 100%;
+    flex-grow: 0;
 }
