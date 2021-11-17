@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 
 import RuleDisplay from './ruleDisplay'
 import HomeButton from './homeButton'
+import { API_URL } from './app'
 
 import { RuleData } from './searchPage'
 
@@ -18,7 +19,7 @@ const RulePage: React.FunctionComponent = (): React.ReactElement => {
 
     const fetchRule = async () => {
         setError(null)
-        let url: URL = new URL("https://ruleslawyer-api.herokuapp.com/api/citation")
+        let url: URL = new URL(API_URL + "/api/citation")
         let params = {
             index: id
         }

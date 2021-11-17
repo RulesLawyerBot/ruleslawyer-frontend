@@ -6,6 +6,7 @@ import CSS from '../styles/rule.module.css'
 import { Link } from 'react-router-dom'
 
 import Highlighted from './highlighted'
+import { rulesDocList } from './glossary'
 
 interface Props {
     rule: RuleData,
@@ -14,12 +15,16 @@ interface Props {
 }
 
 const RuleDisplay: React.FunctionComponent<Props> = ({rule, keywords = [], linkToRule=false}: Props): React.ReactElement => {
-    const { subRules, ruleSource, text, parentIndices, ruleIndex }: RuleData = rule    
+    const { subRules, ruleSource, text, parentIndices, ruleIndex, parentText }: RuleData = rule    
     let index: number = parentIndices.length > 0 ? parentIndices[parentIndices.length - 1] : ruleIndex
 
-    let header: string = rule.parentText? rule.parentText: text
+    let header: string = parentText[0] || text
 
     let body: React.ReactElement
+
+    //only display a subheader if there is parent text for the header
+    //subheader should be rule text for single nested rules, second layer of parent text for double nested rules
+    let subHeader: React.ReactElement = parentText.length > 0 ? <h4><Highlighted text={parentText[1] || text} keywords={keywords} /></h4> : null
 
     if(subRules.length === 0) {
         body = <div><p className={CSS.indented}><Highlighted text={text} keywords={keywords}/></p></div>
@@ -51,6 +56,7 @@ const RuleDisplay: React.FunctionComponent<Props> = ({rule, keywords = [], linkT
                 <span className={CSS.ruleSource}>{ruleSource}</span>
                 {linkToRule ? <Link to={`/rule/${index}`}>{header}</Link> : header}
             </h2>
+            {subHeader}
             {body}
         </div>
     )

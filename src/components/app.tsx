@@ -13,8 +13,9 @@ import Footer from './footer'
 
 import CSS from '../styles/app.module.css'
 
-export function App(): React.ReactElement {
+export const API_URL = process.env.API_URL
 
+export function App(): React.ReactElement {
     return(
         <div className={CSS.app}>
             <Router>

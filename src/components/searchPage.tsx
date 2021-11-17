@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom'
 import SearchBox from './searchBox'
 import ResultsList from './resultsList'
 import HomeButton from './homeButton'
+import { API_URL } from './app'
 
 import CSS from '../styles/searchPage.module.css'
 
@@ -21,7 +22,7 @@ interface RLReturnData {
 export interface RuleData{
     parentIndices: number[],
     ruleIndex: number,
-    parentText: string,
+    parentText: string[],
     ruleSource: string,
     subRules: RuleData[],
     text: string,
@@ -50,13 +51,12 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
         setLoading(true)
         setRules([])
 
-        let url: URL = new URL("https://ruleslawyer-api.herokuapp.com/api/search")
+        let url: URL = new URL(API_URL + '/api/search')
         let params = {
             keywords: query.split(' ').toString(),
         }
 
         url.search = new URLSearchParams(params).toString()
-        console.log(url.toString())
 
         let response = await fetch(url.href)        
         if(response.status != 200) {
@@ -68,11 +68,11 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
         let body: any = await response.json()
         let data: RLReturnData = body as RLReturnData
 
+        setLoading(false)
         if(data.rules.length > 0) {
             setRules(data.rules)
             setMessage(`Showing ${data.rules.length} results for ${query}.`)
             setKeywords(data.request.keywords)
-            setLoading(false)
         } else {
             setMessage(`Search for ${query} returned no results`)
         }
