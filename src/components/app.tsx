@@ -10,6 +10,7 @@ import NotFound from "./notfound"
 import About from "./about"
 import BotsPage from './botsPage'
 import Footer from './footer'
+import { Helmet } from 'react-helmet'
 
 import CSS from '../styles/app.module.css'
 
@@ -18,6 +19,9 @@ export const API_URL = process.env.API_URL
 export function App(): React.ReactElement {
     return(
         <div className={CSS.app}>
+            <Helmet>
+                <title>RulesLawyer</title>
+            </Helmet>
             <Router>
                 {/* <TopBar/> */}
                 <div className={CSS.body}>

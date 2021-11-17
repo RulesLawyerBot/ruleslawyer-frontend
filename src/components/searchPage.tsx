@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 import SearchBox from './searchBox'
 import ResultsList from './resultsList'
@@ -114,6 +115,9 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
 
     return (
         <div>
+            <Helmet>
+                <title>{query} | RulesLawyer</title>
+            </Helmet>
             <div className={CSS.searchBarContainer}>
                 <HomeButton/>
                 <SearchBox/>

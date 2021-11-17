@@ -1,11 +1,11 @@
 import * as React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { Helmet } from 'react-helmet'
 
 import RuleDisplay from './ruleDisplay'
 import HomeButton from './homeButton'
 import { API_URL } from './app'
-
 import { RuleData } from './searchPage'
 
 import CSS from '../styles/rulePage.module.css'
@@ -45,6 +45,9 @@ const RulePage: React.FunctionComponent = (): React.ReactElement => {
     if(rule) {
         return(
             <div className={CSS.rulePage}>
+                <Helmet>
+                    <title>{rule.text} | RulesLawyer</title>
+                </Helmet>
                 <div className={CSS.navLinkContainer}>
                     <Link to={`/rule/${rule.previousIndex}`} className={CSS.navLink}>{'< Previous'}</Link>
                     <div className={CSS.navLinkHome}>
