@@ -42,13 +42,6 @@ const RulePage: React.FunctionComponent = (): React.ReactElement => {
         fetchRule()
     }, [id])
 
-
-    // return(
-    //     <div>
-    //         { rule ? <RuleDisplay rule={rule}/> : <div>{error ? <h4>Rule {id} not found.</h4> : null}</div>}
-    //     </div>
-    // )
-
     if(rule) {
         return(
             <div className={CSS.rulePage}>

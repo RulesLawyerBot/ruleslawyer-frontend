@@ -84,3 +84,19 @@
         transform: rotate(405deg);
     }
 }
+
+.pageLinkContainer {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    margin-bottom: .75em;
+}
+
+.pageLink {
+    font-size: larger;
+}
+
+.right {
+    text-align: right;
+    flex-grow: 1;
+}

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import SearchBox from './searchBox'
 import ResultsList from './resultsList'
@@ -31,15 +31,24 @@ export interface RuleData{
 }
 
 const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
-    const useQuery = ():[string] => {
-        let params = new URLSearchParams(useLocation().search)
-        return [params.get('q')]
-    }
-    const [query] = useQuery()
+
+    const RESULTS_PER_PAGE = 15
+    // const useQuery = ():[string] => {
+    //     let params = new URLSearchParams(useLocation().search)
+    //     return [params.get('q')]
+    // }
+
+    let params = new URLSearchParams(useLocation().search)
+    
+    const query = params.get('q')
+    const page: number = parseInt(params.get('page')) || 1
+
     const [rules, setRules] = useState<RuleData[]>([])
     const [message, setMessage] = useState<string>('')
     const [keywords, setKeywords] = useState<string[]>([])
     const [loading, setLoading] = useState<boolean>(true)
+
+    let pageStart: number = RESULTS_PER_PAGE * (page - 1)
 
     const fetchRules = async () => {
 
@@ -69,18 +78,27 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
         let data: RLReturnData = body as RLReturnData
 
         setLoading(false)
-        if(data.rules.length > 0) {
-            setRules(data.rules)
-            setMessage(`Showing ${data.rules.length} results for "${query}".`)
-            setKeywords(data.request.keywords)
-        } else {
-            setMessage('')
-        }
+        setRules(data.rules)
+        setKeywords(data.request.keywords)
     }
 
     useEffect((): void => {
         fetchRules()
     }, [query])
+
+    //update message when rules or page changes
+    useEffect((): void => {
+        if(rules.length > 0) {
+            setMessage(`Showing results ${pageStart + 1} - ${Math.min(pageStart + RESULTS_PER_PAGE, rules.length)} of ${rules.length} for "${query}" (Page ${page} of ${Math.ceil(rules.length / RESULTS_PER_PAGE)})`)
+        } else {
+            setMessage('')
+        }
+    }, [rules.length,page])
+
+    //scroll to top on load
+    useEffect(() => {
+        window.scrollTo(0,0)
+    })
 
     let notFound: React.ReactElement
 
@@ -104,10 +122,15 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
                 {message && !loading? <div className={CSS.message}><p>{message}</p></div> : null}
                 {notFound}
                 {loading? <div className={CSS.loading}><div className={CSS.loadingAnimation}></div><div className={CSS.loadingText}>Loading</div></div>: null}
-                <ResultsList rules={rules} keywords={keywords}/>
+                <ResultsList rules={rules.slice(pageStart, pageStart + RESULTS_PER_PAGE)} keywords={keywords}/>
+                <div className={CSS.pageLinkContainer}>
+                    {!loading && page > 1? <div className={CSS.pageLink}><Link to={`/search?q=${query}&page=${page-1}`}>{`< Page ${page - 1}`}</Link></div> : null}
+                    {!loading && page < Math.ceil(rules.length / RESULTS_PER_PAGE)? <div className={`${CSS.pageLink} ${CSS.right}`}><Link to={`/search?q=${query}&page=${page+1}`}>{`Page ${page + 1} >`}</Link></div> : null}
+                </div>
             </div>
         </div>
     )
 }
+
 
 export default SearchPage
