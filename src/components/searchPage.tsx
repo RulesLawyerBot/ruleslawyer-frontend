@@ -39,7 +39,7 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
     const [rules, setRules] = useState<RuleData[]>([])
     const [message, setMessage] = useState<string>('')
     const [keywords, setKeywords] = useState<string[]>([])
-    const [loading, setLoading] = useState<boolean>(false)
+    const [loading, setLoading] = useState<boolean>(true)
 
     const fetchRules = async () => {
 
@@ -101,7 +101,7 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
                 <SearchBox/>
             </div>
             <div className={CSS.body}>
-                {message? <div className={CSS.message}><p>{message}</p></div> : null}
+                {message && !loading? <div className={CSS.message}><p>{message}</p></div> : null}
                 {notFound}
                 {loading? <div className={CSS.loading}><div className={CSS.loadingAnimation}></div><div className={CSS.loadingText}>Loading</div></div>: null}
                 <ResultsList rules={rules} keywords={keywords}/>
