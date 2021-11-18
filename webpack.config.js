@@ -26,7 +26,7 @@ module.exports = {
            favicon: "./src/favicon.png"
         }),
         new webpack.DefinePlugin({
-          "process.env": JSON.stringify(dotenv.parsed)
+          "process.env": process.env ? JSON.stringify(process.env) : JSON.stringify(dotenv.parsed)
         })
     ],
     resolve: {
