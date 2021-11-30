@@ -10,13 +10,18 @@ import NotFound from "./notfound"
 import About from "./about"
 import BotsPage from './botsPage'
 import Footer from './footer'
+import { Helmet } from 'react-helmet'
 
 import CSS from '../styles/app.module.css'
 
-export function App(): React.ReactElement {
+export const API_URL = process.env.API_URL
 
+export function App(): React.ReactElement {
     return(
         <div className={CSS.app}>
+            <Helmet>
+                <title>RulesLawyer</title>
+            </Helmet>
             <Router>
                 {/* <TopBar/> */}
                 <div className={CSS.body}>
@@ -32,7 +37,7 @@ export function App(): React.ReactElement {
                         <Route path='/glossary/:id' component={Glossary}/>
                         <Route path='/about' component={About}/>
                         <Route path='/bots' component={BotsPage}/>
-                        <Route component={NotFound}/>
+                        <Route path='*'component={NotFound}/>
                     </Switch>
                 </div>
                 <Footer/>

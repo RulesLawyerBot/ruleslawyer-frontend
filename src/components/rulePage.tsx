@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { Helmet } from 'react-helmet'
 
 import RuleDisplay from './ruleDisplay'
 import HomeButton from './homeButton'
-
+import { API_URL } from './app'
 import { RuleData } from './searchPage'
 
 import CSS from '../styles/rulePage.module.css'
@@ -18,7 +19,7 @@ const RulePage: React.FunctionComponent = (): React.ReactElement => {
 
     const fetchRule = async () => {
         setError(null)
-        let url: URL = new URL("https://ruleslawyer-api.herokuapp.com/api/citation")
+        let url: URL = new URL(API_URL + "/api/citation")
         let params = {
             index: id
         }
@@ -41,19 +42,17 @@ const RulePage: React.FunctionComponent = (): React.ReactElement => {
         fetchRule()
     }, [id])
 
-
-    // return(
-    //     <div>
-    //         { rule ? <RuleDisplay rule={rule}/> : <div>{error ? <h4>Rule {id} not found.</h4> : null}</div>}
-    //     </div>
-    // )
-
     if(rule) {
         return(
             <div className={CSS.rulePage}>
+                <Helmet>
+                    <title>{rule.text} | RulesLawyer</title>
+                </Helmet>
                 <div className={CSS.navLinkContainer}>
                     <Link to={`/rule/${rule.previousIndex}`} className={CSS.navLink}>{'< Previous'}</Link>
-                    <HomeButton/>
+                    <div className={CSS.navLinkHome}>
+                        <HomeButton/>
+                    </div>
                     <Link to={`/rule/${rule.nextIndex}`} className={CSS.navLink}>{'Next >'}</Link>
                 </div>
                 <RuleDisplay rule={rule}/>
