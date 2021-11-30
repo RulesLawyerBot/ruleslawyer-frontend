@@ -5,6 +5,7 @@ import { RuleData } from './searchPage'
 
 import GlossarySidebar from './glossarySidebar'
 import Expandable from './expandable'
+import { API_URL } from './app'
 
 import CSS from '../styles/glossary.module.css'
 
@@ -45,7 +46,7 @@ const Glossary: React.FunctionComponent = (): React.ReactElement => {
             return;
         }
 
-        let url: URL = new URL("https://ruleslawyer-api.herokuapp.com/api/index")
+        let url: URL = new URL(API_URL + '/api/index')
         let params = {
             ruleSource: currentDoc
         }
