@@ -8,7 +8,8 @@
     "devserver": "webpack serve --mode development",
     "windows-build": "rm -rf dist; node_modules/.bin/webpack --mode development",
     "windows-devserver": "node_modules/.bin/webpack serve --mode development",
-    "start": "node server.mjs"
+    "start": "node server.mjs",
+    "start-dev": "node -r dotenv/config server.mjs"
   },
   "author": "",
   "license": "ISC",

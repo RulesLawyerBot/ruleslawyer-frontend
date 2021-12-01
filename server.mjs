@@ -2,17 +2,15 @@ import fetch from 'node-fetch'
 import { URL, URLSearchParams, fileURLToPath } from 'url'
 import express from 'express'
 import path from 'path'
-import dotenv from 'dotenv'
+// import dotenv from 'dotenv'
 
-// const express = require('express')
-// const path = require('path');
-// require('dotenv').config()
-
-dotenv.config()
+// dotenv.config()
 
 const app = express()
 const port = process.env.PORT || 3000 // Heroku will need the PORT environment variable
 const API_URL = process.env.API_URL
+
+console.log(API_URL)
 
 app.use(express.static(path.join(path.dirname(fileURLToPath(import.meta.url)), 'dist')));
 
