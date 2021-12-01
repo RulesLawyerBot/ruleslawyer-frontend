@@ -14,7 +14,7 @@ import { Helmet } from 'react-helmet'
 
 import CSS from '../styles/app.module.css'
 
-export const API_URL = process.env.API_URL
+export const API_URL = process.env.LOCAL_SERVER || window.location.origin
 
 export function App(): React.ReactElement {
     return(
