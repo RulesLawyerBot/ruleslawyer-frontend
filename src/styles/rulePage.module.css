@@ -33,3 +33,7 @@
 .navLinkHome {
     flex-grow: 0;
 }
+
+.rulePage {
+    margin-bottom: 1.25em;
+}

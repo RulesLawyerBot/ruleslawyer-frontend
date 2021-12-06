@@ -21,7 +21,7 @@ const RuleDisplay: React.FunctionComponent<Props> = ({rule, keywords = [], linkT
 
     let header: string = parentText[0] || text
 
-    let body: React.ReactElement
+    let body: React.ReactElement = null
 
     //only display a subheader if there is parent text for the header
     //subheader should be rule text for single nested rules, second layer of parent text for double nested rules
@@ -29,12 +29,18 @@ const RuleDisplay: React.FunctionComponent<Props> = ({rule, keywords = [], linkT
     let subHeader: React.ReactElement = parentText.length > 0 ? <Highlighted text={parentText[1] || text} keywords={keywords} />: null
 
     if(subRules.length === 0) {
-        body = <div><p className={CSS.indented}><Highlighted text={text} keywords={keywords}/></p></div>
+        if(parentText.length > 1) {
+            body = <div><p className={CSS.indented}><Highlighted text={text} keywords={keywords}/></p></div>
+        }
     } else {
         body = <div>
             {subRules.map((rule: RuleData, i: number) => {
                 if(rule.subRules.length === 0){
-                    return <p className={CSS.indented} key={i.toString()}><Highlighted text={rule.text} keywords={keywords}/></p>
+                    if(rule.parentText.length > 1) {
+                        return <p className={CSS.indented} key={i.toString()}><Highlighted text={rule.text} keywords={keywords}/></p>
+                    } else {
+                        return <h4 key={i.toString()} id={`${rule.ruleIndex}`}><Highlighted text={rule.text} keywords={keywords}/></h4>
+                    }
                 } else {
                     let currentRuleSubheader: React.ReactElement = <Highlighted text={rule.text} keywords={keywords}/>
                     return (
