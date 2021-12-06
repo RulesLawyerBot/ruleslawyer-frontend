@@ -1,8 +1,50 @@
 .sidebarItem {
     text-decoration: none;
     color: black;
+    font-size: large;
 }
 
 .itemSelected {
     background-color: lightseagreen;
+}
+
+.sidebarContainer {
+    list-style-type: none;
+    /* padding: .75em; */
+    padding: 0;
+    /* border-width: 2px;
+    border-style: solid;
+    border-right: none;
+    border-image: linear-gradient(to bottom,transparent, rgba(0,0,0,0.8), transparent) 1 100%; */
+    /* margin-left: -11vw; */
+}
+
+.sidebarContainer li:not(:last-child) {
+    margin-bottom: 3px;
+}
+
+.glossaryContainer {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.glossaryTitle {
+    font-size: x-large;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+}
+
+.glossaryHeader {
+    font-size: large;
+    font-weight: bold;
+    border-bottom: 1px dotted grey;
+    padding-bottom: 5px;
+    padding-top: 15px;
+}
+
+.glossaryRuleBody {
+    padding-left: 15px;
 }

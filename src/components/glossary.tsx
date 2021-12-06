@@ -8,6 +8,7 @@ import Expandable from './expandable'
 import { API_URL } from './app'
 
 import CSS from '../styles/glossary.module.css'
+import RuleCSS from '../styles/rule.module.css'
 
 export const rulesDocList: Record<string, string> = {
     CR: 'Comprehensive Rules', 
@@ -20,7 +21,7 @@ export const rulesDocList: Record<string, string> = {
 }
 
 
-interface RuleDataIncomplete extends RuleData {
+export interface RuleDataIncomplete extends RuleData {
     hasFullRules: boolean
 }
 
@@ -39,8 +40,6 @@ const Glossary: React.FunctionComponent = (): React.ReactElement => {
     }
 
     const fetchRuleList = async () => {
-
-        //output an error and don't make an api call if the current doc address is not legal
         if(rulesDocList[currentDoc] === null) {
             console.log('invalid document')
             return;
@@ -64,14 +63,22 @@ const Glossary: React.FunctionComponent = (): React.ReactElement => {
         setRules(currentDoc, newMap)
     }
 
+    const fetchRuleData = async (ruleIndex: number) => {
+        let url: URL = new URL(API_URL + '/api/citation')
+        let params = {
+            index: ruleIndex.toString()
+        }
+        url.search = new URLSearchParams(params).toString()
+
+        let response = await fetch(url.href)
+        let body: any = await response.json()
+        let ruleData: RuleDataIncomplete = {...body as RuleData, hasFullRules: true}
+        setRuleData(ruleData.ruleSource, ruleData.ruleIndex, ruleData)
+    }
+
     useEffect(() => {
         if(!rules.has(currentDoc)) {
-            console.log(`rules for ${currentDoc} not found, fetching`)
-            fetchRuleList().then(() => {
-                console.log(rules.get(currentDoc))
-            })
-        } else {
-            console.log(`already have rules for ${currentDoc}`)
+            fetchRuleList()
         }
     }, [currentDoc])
 
@@ -80,17 +87,22 @@ const Glossary: React.FunctionComponent = (): React.ReactElement => {
     let currentDocItems: Map<number, RuleDataIncomplete> = rules.get(currentDoc)
     if(currentDocItems) {
         currentDocItems.forEach((rule: RuleDataIncomplete) => {
-            ruleElements.push(<Expandable label={rule.text} key={rule.ruleIndex} contents={<div>currently empty</div>}/>)
+            ruleElements.push(<Expandable key={rule.ruleIndex} label={rule.text} contents={rule} getData={fetchRuleData} />)
         }) 
     }
 
+    let glossaryDisplay: React.ReactElement = <div className={CSS.glossaryContainer}>
+        <div className={CSS.glossaryTitle}>
+            <span className={RuleCSS.ruleSource}>{currentDoc}</span>
+            {rulesDocList[currentDoc]}
+        </div>
+        {ruleElements}
+    </div>
 
     return (
         <div>
             <GlossarySidebar/>
-            <div>
-                {ruleElements}
-            </div>
+            {currentDocItems && currentDocItems.size > 0 ? glossaryDisplay : null}
         </div>
     )
 }
