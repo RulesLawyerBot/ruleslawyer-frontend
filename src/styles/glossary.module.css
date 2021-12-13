@@ -48,3 +48,18 @@
 .glossaryRuleBody {
     padding-left: 15px;
 }
+
+.dropdownItem {
+    display: flex;
+    flex-direction: row;
+}
+
+.dropdownItemContainer {
+    border-top: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none;
+}

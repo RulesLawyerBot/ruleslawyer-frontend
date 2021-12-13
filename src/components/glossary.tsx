@@ -5,6 +5,7 @@ import { RuleData } from './searchPage'
 
 import GlossarySidebar from './glossarySidebar'
 import Expandable from './expandable'
+import RuleSourceDropdown from './ruleSourceDropdown'
 import { API_URL } from './app'
 
 import CSS from '../styles/glossary.module.css'
@@ -92,10 +93,11 @@ const Glossary: React.FunctionComponent = (): React.ReactElement => {
     }
 
     let glossaryDisplay: React.ReactElement = <div className={CSS.glossaryContainer}>
-        <div className={CSS.glossaryTitle}>
+        {/* <div className={CSS.glossaryTitle}>
             <span className={RuleCSS.ruleSource}>{currentDoc}</span>
             {rulesDocList[currentDoc]}
-        </div>
+        </div> */}
+        <RuleSourceDropdown/>
         {ruleElements}
     </div>
 
