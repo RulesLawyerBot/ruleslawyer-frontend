@@ -1,6 +1,7 @@
 import * as React from 'react'
 
-import { useState, Fragment } from 'react'
+import { useState, useRef, useEffect, Fragment } from 'react'
+import { useHistory, useParams } from 'react-router'
 
 import { RuleDataIncomplete } from './glossary'
 
@@ -18,7 +19,23 @@ interface Props {
 
 const Expandable: React.FunctionComponent<Props> = ({label, contents, getData}: Props) => {
 
-    let [open, setOpen] = useState(false)
+    const { heading, id: currentDoc } = useParams<{heading: string, id: string}>()
+    const history = useHistory()
+    let navID: number = parseInt(heading)
+    let navToHere: boolean = navID >= contents.ruleIndex && navID < contents.nextIndex
+    
+    const [open, setOpen] = useState(navToHere)
+    const ref = useRef<HTMLHeadingElement>(null)
+    const getRef = (id: number) => {
+        return id === navID ? ref : null
+    }
+
+    const onClick = () => {
+        if(!open){
+            history.push(`/glossary/${currentDoc}/${contents.ruleIndex}`)
+        }
+        setOpen(!open)
+    }
 
     let displayedRules: React.ReactElement = null
     
@@ -28,13 +45,12 @@ const Expandable: React.FunctionComponent<Props> = ({label, contents, getData}: 
             <div className={CSS.glossaryRuleBody}>
                 {contents.subRules.map((rule: RuleData, index: number) => {
                     if(rule.subRules.length === 0) {
-                        return <h4 key={index.toString()}>{rule.text}</h4>
+                        return <h4 ref={getRef(rule.ruleIndex)} key={index.toString()}>{rule.text}</h4>
                     } else {
-                        console.log(`have ${rule.subRules.length} subrules for ${rule.text}`)
                         let subHeader: string = rule.text
                         return (
                             <Fragment key={index.toString()}>
-                                <h4>{subHeader}</h4>
+                                <h4 ref={getRef(rule.ruleIndex)}>{subHeader}</h4>
                                 <div className={RuleCSS.indented}>
                                     {rule.subRules.map((subRule: RuleData, subIndex: number) => <p key={`sub${subIndex.toString()}`}>{subRule.text}</p>)}
                                 </div>
@@ -48,9 +64,13 @@ const Expandable: React.FunctionComponent<Props> = ({label, contents, getData}: 
         }
     }
 
+    useEffect(() => {
+        ref.current?.scrollIntoView({behavior: 'smooth'})
+    }, [contents.hasFullRules])
+
     return(
         <div>
-            <div className={CSS.glossaryHeader} onClick={() => setOpen(!open)}>
+            <div ref={getRef(contents.ruleIndex)} className={CSS.glossaryHeader} onClick={onClick}>
                 {label}
             </div>
             {open? contents.hasFullRules? displayedRules: "don't have data yet" : null}
