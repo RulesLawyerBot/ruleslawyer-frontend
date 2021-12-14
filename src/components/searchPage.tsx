@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet'
 import SearchBox from './searchBox'
 import ResultsList from './resultsList'
 import HomeButton from './homeButton'
+import LoadingAnimation from './loadingAnimation'
 import { API_URL } from './app'
 
 import CSS from '../styles/searchPage.module.css'
@@ -125,7 +126,7 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
             <div className={CSS.body}>
                 {message && !loading? <div className={CSS.message}><p>{message}</p></div> : null}
                 {notFound}
-                {loading? <div className={CSS.loading}><div className={CSS.loadingAnimation}></div><div className={CSS.loadingText}>Loading</div></div>: null}
+                {loading? <LoadingAnimation text={'Loading'}/>: null}
                 <ResultsList rules={rules.slice(pageStart, pageStart + RESULTS_PER_PAGE)} keywords={keywords}/>
                 <div className={CSS.pageLinkContainer}>
                     {!loading && page > 1? <div className={CSS.pageLink}><Link to={`/search?q=${query}&page=${page-1}`}>{`< Page ${page - 1}`}</Link></div> : null}

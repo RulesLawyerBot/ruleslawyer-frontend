@@ -1,0 +1,40 @@
+.loading {
+    margin-top: 10em;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    position: relative;
+}
+
+.loadingAnimation {
+    height: 100%;
+    width: 100%;
+    top: -3px;
+    left: -3px;
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-bottom: 3px solid black;
+    border-right: 3px solid black;
+    animation: rotate 1.5s ease infinite;
+}
+
+.loadingText {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(45deg);
+    }
+    to {
+        transform: rotate(405deg);
+    }
+}
