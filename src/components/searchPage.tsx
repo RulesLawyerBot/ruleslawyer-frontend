@@ -126,7 +126,7 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
             <div className={CSS.body}>
                 {message && !loading? <div className={CSS.message}><p>{message}</p></div> : null}
                 {notFound}
-                {loading? <LoadingAnimation text={'Loading'}/>: null}
+                {loading? <div style={{marginTop: '10em'}}><LoadingAnimation text={'Loading'}/></div>: null}
                 <ResultsList rules={rules.slice(pageStart, pageStart + RESULTS_PER_PAGE)} keywords={keywords}/>
                 <div className={CSS.pageLinkContainer}>
                     {!loading && page > 1? <div className={CSS.pageLink}><Link to={`/search?q=${query}&page=${page-1}`}>{`< Page ${page - 1}`}</Link></div> : null}
