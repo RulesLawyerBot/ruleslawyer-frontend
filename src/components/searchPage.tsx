@@ -116,7 +116,7 @@ const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
     return (
         <div>
             <Helmet>
-                <title>{query} | RulesLawyer</title>
+                <title>{query || 'Search'} | RulesLawyer</title>
             </Helmet>
             <div className={CSS.searchBarContainer}>
                 <HomeButton/>
