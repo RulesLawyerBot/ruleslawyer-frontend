@@ -20,7 +20,7 @@ const GlossarySidebar: React.FunctionComponent = (): React.ReactElement => {
 
 
     return (
-        <ul>
+        <ul className={CSS.sidebarContainer}>
             {docListItems}
         </ul>
     )

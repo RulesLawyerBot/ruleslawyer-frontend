@@ -46,7 +46,7 @@ const RuleDisplay: React.FunctionComponent<Props> = ({rule, keywords = [], linkT
                     return (
                         <Fragment key={i.toString()}>
                             <h4 id={`${rule.ruleIndex}`}>
-                                {linkToRule ? <HashLink smooth to={`/rule/${index}#${rule.ruleIndex}`}>{currentRuleSubheader}</HashLink> : currentRuleSubheader}
+                                {linkToRule ? <Link to={`/glossary/${rule.ruleSource}/${rule.ruleIndex}`}>{currentRuleSubheader}</Link> : currentRuleSubheader}
                             </h4>
                             <div className={CSS.indented}>
                                 {rule.subRules.map((subRule: RuleData, subIndex: number) => <p key={`sub${subIndex.toString()}`}><Highlighted text={subRule.text} keywords={keywords}/></p>)}
@@ -65,9 +65,9 @@ const RuleDisplay: React.FunctionComponent<Props> = ({rule, keywords = [], linkT
         <div className={`${CSS.ruleBody} ${CSS.ruleContainer}`}>
             <h2 className={CSS.ruleHeader}>
                 <span className={CSS.ruleSource}>{ruleSource}</span>
-                {linkToRule ? <Link to={`/rule/${index}`}>{header}</Link> : header}
+                {linkToRule ? <Link to={`/glossary/${ruleSource}/${index}`}>{header}</Link> : header}
             </h2>
-            {subHeader ? <h4 id={`${subHeaderID}`}>{linkToRule? <HashLink smooth to={`/rule/${index}#${subHeaderID}`}>{subHeader}</HashLink> : subHeader}</h4> : null}
+            {subHeader ? <h4 id={`${subHeaderID}`}>{linkToRule? <HashLink smooth to={`/glossary/${ruleSource}/${subHeaderID}`}>{subHeader}</HashLink> : subHeader}</h4> : null}
             {body}
         </div>
     )

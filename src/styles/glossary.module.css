@@ -1,8 +1,116 @@
-.sidebarItem {
+/* .sidebarItem {
     text-decoration: none;
     color: black;
+    font-size: large;
 }
 
 .itemSelected {
     background-color: lightseagreen;
+}
+
+.sidebarContainer {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebarContainer li:not(:last-child) {
+    margin-bottom: 3px;
+} */
+
+.topBar {
+    height: 5vh;
+    font-size: 5vh;
+    font-weight: bold;
+    display: flex;
+    padding-bottom: .25em;
+    padding-top: .25em;
+}
+
+.glossaryContainer {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.glossaryTitle {
+    font-size: x-large;
+    font-weight: bold;
+    padding-bottom: 10px;
+    /* position:sticky;
+    top: 0; */
+}
+
+.glossaryHeader {
+    font-size: large;
+    font-weight: bold;
+    border-bottom: 1px dotted grey;
+    padding-bottom: 5px;
+    padding-top: 15px;
+}
+
+.glossaryBody > :first-child {
+    border-top: 1px solid black;
+}
+
+.glossaryRuleBody {
+    padding-left: 15px;
+}
+
+.dropdownItem {
+    display: flex;
+    flex-direction: row;
+    padding-left: .25em;
+}
+
+.dropdownItem a {
+    text-decoration: none;
+    /* padding-right: .25em; */
+}
+
+.dropdownItem:not(:last-child){
+    margin-bottom: 2px;
+}
+
+.dropdownItemContainer {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    transition: max-height linear .25s;
+    overflow: hidden;
+    font-size: large;
+    font-weight: normal;
+    border-left: 1px solid lightgrey;
+    margin-left: 1em;
+}
+
+.closed {
+    max-height: 0;
+}
+
+.rotated {
+    transform: rotate(180deg);
+}
+
+.dropdownIcon {
+    position: relative;
+    top: 3px;
+    transition: transform linear .25s;
+}
+
+.dropdownIconPadding {
+    display: inline-flex;
+    box-sizing: border-box;
+    padding-left: 5px;
+}
+
+.clickable {
+    display: inline-block;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
 }

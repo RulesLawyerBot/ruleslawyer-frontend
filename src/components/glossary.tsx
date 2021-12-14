@@ -1,11 +1,18 @@
 import * as React from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import { RuleData } from './searchPage'
 
 import GlossarySidebar from './glossarySidebar'
+import Expandable from './expandable'
+import RuleSourceDropdown from './ruleSourceDropdown'
+import { API_URL } from './app'
+import LoadingAnimation from './loadingAnimation'
 
 import CSS from '../styles/glossary.module.css'
+import RuleCSS from '../styles/rule.module.css'
+import HomeButton from './homeButton'
+import { Helmet } from 'react-helmet'
 
 export const rulesDocList: Record<string, string> = {
     CR: 'Comprehensive Rules', 
@@ -18,7 +25,7 @@ export const rulesDocList: Record<string, string> = {
 }
 
 
-interface RuleDataIncomplete extends RuleData {
+export interface RuleDataIncomplete extends RuleData {
     hasFullRules: boolean
 }
 
@@ -37,14 +44,12 @@ const Glossary: React.FunctionComponent = (): React.ReactElement => {
     }
 
     const fetchRuleList = async () => {
-
-        //output an error and don't make an api call if the current doc address is not legal
-        if(rulesDocList[currentDoc] === null) {
+        if(rulesDocList[currentDoc] == null) {
             console.log('invalid document')
             return;
         }
 
-        let url: URL = new URL("https://ruleslawyer-api.herokuapp.com/api/index")
+        let url: URL = new URL(API_URL + '/api/index')
         let params = {
             ruleSource: currentDoc
         }
@@ -62,14 +67,22 @@ const Glossary: React.FunctionComponent = (): React.ReactElement => {
         setRules(currentDoc, newMap)
     }
 
+    const fetchRuleData = async (ruleIndex: number) => {
+        let url: URL = new URL(API_URL + '/api/citation')
+        let params = {
+            index: ruleIndex.toString()
+        }
+        url.search = new URLSearchParams(params).toString()
+
+        let response = await fetch(url.href)
+        let body: any = await response.json()
+        let ruleData: RuleDataIncomplete = {...body as RuleData, hasFullRules: true}
+        setRuleData(ruleData.ruleSource, ruleData.ruleIndex, ruleData)
+    }
+
     useEffect(() => {
         if(!rules.has(currentDoc)) {
-            console.log(`rules for ${currentDoc} not found, fetching`)
-            fetchRuleList().then(() => {
-                console.log(rules.get(currentDoc))
-            })
-        } else {
-            console.log(`already have rules for ${currentDoc}`)
+            fetchRuleList()
         }
     }, [currentDoc])
 
@@ -78,16 +91,25 @@ const Glossary: React.FunctionComponent = (): React.ReactElement => {
     let currentDocItems: Map<number, RuleDataIncomplete> = rules.get(currentDoc)
     if(currentDocItems) {
         currentDocItems.forEach((rule: RuleDataIncomplete) => {
-            ruleElements.push(<h5 key={rule.ruleIndex}>{rule.text}</h5>)
+            ruleElements.push(<Expandable key={rule.ruleIndex} label={rule.text} contents={rule} getData={fetchRuleData} />)
         }) 
     }
 
-
     return (
         <div>
-            <GlossarySidebar/>
-            <div>
-                {ruleElements}
+            <Helmet>
+                <title>{rulesDocList[currentDoc] || 'Glossary'} | RulesLawyer</title>
+            </Helmet>
+            <div className={CSS.topBar}>
+                <HomeButton/>
+                Glossary
+            </div>
+            <div className={CSS.glossaryContainer}>
+                <RuleSourceDropdown/>
+                <div className={CSS.glossaryBody}>
+                    {currentDocItems && currentDocItems.size > 0 ? ruleElements : 
+                        currentDoc in rulesDocList ? <div className={CSS.loading}><LoadingAnimation text='Loading'/></div> : null}
+                </div>
             </div>
         </div>
     )

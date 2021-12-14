@@ -46,6 +46,7 @@ module.exports = {
             {
               enforce: 'pre',
               test: /\.js$/,
+              exclude: /node_modules/,
               loader: 'source-map-loader'
             },
             {

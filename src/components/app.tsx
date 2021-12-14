@@ -33,8 +33,7 @@ export function App(): React.ReactElement {
                             <SearchPage/>
                         </Route>
                         <Route path='/rule/:id' component={RulePage}/>
-                        <Route exact path='/glossary/' component={Glossary}/>
-                        <Route path='/glossary/:id' component={Glossary}/>
+                        <Route path='/glossary/:id?/:heading?' component={Glossary}/>
                         <Route path='/about' component={About}/>
                         <Route path='/bots' component={BotsPage}/>
                         <Route path='*'component={NotFound}/>
