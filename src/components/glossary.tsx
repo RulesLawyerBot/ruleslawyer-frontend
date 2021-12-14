@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import { RuleData } from './searchPage'
 
 import GlossarySidebar from './glossarySidebar'
@@ -10,6 +10,8 @@ import { API_URL } from './app'
 
 import CSS from '../styles/glossary.module.css'
 import RuleCSS from '../styles/rule.module.css'
+import HomeButton from './homeButton'
+import { Helmet } from 'react-helmet'
 
 export const rulesDocList: Record<string, string> = {
     CR: 'Comprehensive Rules', 
@@ -41,7 +43,7 @@ const Glossary: React.FunctionComponent = (): React.ReactElement => {
     }
 
     const fetchRuleList = async () => {
-        if(rulesDocList[currentDoc] === null) {
+        if(rulesDocList[currentDoc] == null) {
             console.log('invalid document')
             return;
         }
@@ -92,19 +94,21 @@ const Glossary: React.FunctionComponent = (): React.ReactElement => {
         }) 
     }
 
-    let glossaryDisplay: React.ReactElement = <div className={CSS.glossaryContainer}>
-        {/* <div className={CSS.glossaryTitle}>
-            <span className={RuleCSS.ruleSource}>{currentDoc}</span>
-            {rulesDocList[currentDoc]}
-        </div> */}
-        <RuleSourceDropdown/>
-        {ruleElements}
-    </div>
-
     return (
         <div>
-            <GlossarySidebar/>
-            {currentDocItems && currentDocItems.size > 0 ? glossaryDisplay : null}
+            <Helmet>
+                <title>{rulesDocList[currentDoc] || 'Glossary'} | RulesLawyer</title>
+            </Helmet>
+            <div className={CSS.topBar}>
+                <HomeButton/>
+                Glossary
+            </div>
+            <div className={CSS.glossaryContainer}>
+                <RuleSourceDropdown/>
+                <div className={CSS.glossaryBody}>
+                    {currentDocItems && currentDocItems.size > 0 ? ruleElements : null}
+                </div>
+            </div>
         </div>
     )
 }
