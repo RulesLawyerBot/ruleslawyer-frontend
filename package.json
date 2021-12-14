@@ -1,6 +1,9 @@
 {
   "name": "ruleslawyer-frontend",
   "version": "1.0.0",
+  "engines": {
+    "node": "15.x"
+  },
   "description": "frontend for ruleslawyer",
   "main": "index.js",
   "scripts": {
