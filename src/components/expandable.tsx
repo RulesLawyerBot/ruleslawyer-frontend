@@ -4,10 +4,13 @@ import { useState, useRef, useEffect, Fragment } from 'react'
 import { useHistory, useParams } from 'react-router'
 
 import { RuleDataIncomplete } from './glossary'
+import { RuleData } from './searchPage'
+import { rulesDocList } from './glossary'
+import LoadingAnimation from './loadingAnimation'
 
 import RuleCSS from '../styles/rule.module.css'
 import CSS from '../styles/glossary.module.css'
-import { RuleData } from './searchPage'
+import { Helmet } from 'react-helmet'
 
 
 interface Props {
@@ -70,10 +73,11 @@ const Expandable: React.FunctionComponent<Props> = ({label, contents, getData}: 
 
     return(
         <div>
+            {navToHere? <Helmet><title>{label} - {rulesDocList[currentDoc]} | RulesLawyer</title></Helmet> : null}
             <div ref={getRef(contents.ruleIndex)} className={CSS.glossaryHeader} onClick={onClick}>
                 {label}
             </div>
-            {open? contents.hasFullRules? displayedRules: "don't have data yet" : null}
+            {open? contents.hasFullRules? displayedRules : <div className={CSS.loading}><LoadingAnimation text='...' size={80} /></div> : null}
         </div>
     )
 }

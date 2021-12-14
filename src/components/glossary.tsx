@@ -7,6 +7,7 @@ import GlossarySidebar from './glossarySidebar'
 import Expandable from './expandable'
 import RuleSourceDropdown from './ruleSourceDropdown'
 import { API_URL } from './app'
+import LoadingAnimation from './loadingAnimation'
 
 import CSS from '../styles/glossary.module.css'
 import RuleCSS from '../styles/rule.module.css'
@@ -106,7 +107,8 @@ const Glossary: React.FunctionComponent = (): React.ReactElement => {
             <div className={CSS.glossaryContainer}>
                 <RuleSourceDropdown/>
                 <div className={CSS.glossaryBody}>
-                    {currentDocItems && currentDocItems.size > 0 ? ruleElements : null}
+                    {currentDocItems && currentDocItems.size > 0 ? ruleElements : 
+                        currentDoc in rulesDocList ? <div className={CSS.loading}><LoadingAnimation text='Loading'/></div> : null}
                 </div>
             </div>
         </div>
