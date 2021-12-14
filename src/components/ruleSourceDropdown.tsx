@@ -13,6 +13,12 @@ const RuleSourceDropdown: React.FunctionComponent = (): React.ReactElement => {
     const { id } = useParams<{id: string}>()
     const [open, setOpen] = useState(!(id in rulesDocList))
 
+    const onClick = () => {
+        if(id in rulesDocList) {
+            setOpen(!open)
+        }
+    }
+
     let docListItems: React.ReactElement[] = []
     for(let key in rulesDocList) {
         if(key !== id) {
@@ -30,9 +36,10 @@ const RuleSourceDropdown: React.FunctionComponent = (): React.ReactElement => {
         }
     }, [id])
 
+
     return(
         <div className={CSS.glossaryTitle}>
-            <div onClick={() => setOpen(!open)} className={CSS.clickable}>
+            <div onClick={onClick} className={CSS.clickable}>
                 <span className={RuleCSS.ruleSource}>{id in rulesDocList ? id : null}</span>
                 {rulesDocList[id] || 'Select a Document'}
                 <div className={CSS.dropdownIconPadding}>

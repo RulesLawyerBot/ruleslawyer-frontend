@@ -6,7 +6,7 @@ import CSS from '../styles/footer.module.css'
 const Footer: React.FunctionComponent<{}> = (): React.ReactElement => {
 
     return(
-        <div className={CSS.footer}><Link to='/about'>About</Link> | <a href='https://www.patreon.com/ruleslawyer'>Patreon</a> | <Link to='/bots'>Chatbots</Link></div>
+        <div className={CSS.footer}><Link to='/about'>About</Link> | <a href='https://www.patreon.com/ruleslawyer'>Patreon</a> | <Link to='/bots'>Chatbots</Link> | <Link to='/glossary'>Glossary</Link></div>
     )
 }
 
