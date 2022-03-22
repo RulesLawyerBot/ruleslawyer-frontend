@@ -8,6 +8,7 @@ import ResultsList from './resultsList'
 import HomeButton from './homeButton'
 import LoadingAnimation from './loadingAnimation'
 import { API_URL } from './app'
+import { RuleData } from '../model/model'
 
 import CSS from '../styles/searchPage.module.css'
 
@@ -21,16 +22,16 @@ interface RLReturnData {
     rules: RuleData[]
 }
 
-export interface RuleData{
-    parentIndices: number[],
-    ruleIndex: number,
-    parentText: string[],
-    ruleSource: string,
-    subRules: RuleData[],
-    text: string,
-    previousIndex: number,
-    nextIndex: number
-}
+// export interface RuleData{
+//     parentIndices: number[],
+//     ruleIndex: number,
+//     parentText: string[],
+//     ruleSource: string,
+//     subRules: RuleData[],
+//     text: string,
+//     previousIndex: number,
+//     nextIndex: number,
+// }
 
 const SearchPage: React.FunctionComponent<{}> = (): React.ReactElement => {
 

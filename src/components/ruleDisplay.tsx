@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { RuleData } from './searchPage'
+import { RuleData } from '../model/model'
 import { Fragment } from 'react'
 
 import CSS from '../styles/rule.module.css'

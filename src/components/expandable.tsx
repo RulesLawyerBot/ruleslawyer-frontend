@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, Fragment } from 'react'
 import { useHistory, useParams } from 'react-router'
 
 import { RuleDataIncomplete } from './glossary'
-import { RuleData } from './searchPage'
+import { RuleData } from '../model/model'
 import { rulesDocList } from './glossary'
 import LoadingAnimation from './loadingAnimation'
 

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useState, useEffect, Fragment } from 'react'
-import { RuleData } from './searchPage'
+import { RuleData } from '../model/model'
 
 import GlossarySidebar from './glossarySidebar'
 import Expandable from './expandable'
