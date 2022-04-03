@@ -12,5 +12,6 @@ export interface RuleData{
 
 export interface Citation {
     citationText: string,
-    ruleIndex: number
+    ruleIndex: number,
+    ruleSource: string
 }

@@ -17,7 +17,7 @@
     color:black;
 }
 
-.ruleBody a:after {
+/* .ruleBody a:after {
     content: "";
     background-image: url('../../assets/link_icon.png');
     background-size: 12px 12px;
@@ -25,11 +25,11 @@
     width: 12px;
     display: inline-block;
     margin-left: 5px;
-}
+} */
 
-.ruleBody a:hover {
-    text-decoration: underline;
-}
+/* .ruleBody a:hover {
+    color:
+} */
 
 .ruleContainer {
     border: solid;

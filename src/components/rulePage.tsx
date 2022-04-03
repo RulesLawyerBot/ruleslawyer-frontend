@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet'
 import RuleDisplay from './ruleDisplay'
 import HomeButton from './homeButton'
 import { API_URL } from './app'
-import { RuleData } from './searchPage'
+import { RuleData } from '../model/model'
 
 import CSS from '../styles/rulePage.module.css'
 

@@ -55,7 +55,7 @@ const Expandable: React.FunctionComponent<Props> = ({label, contents, getData}: 
                             <Fragment key={index.toString()}>
                                 <h4 ref={getRef(rule.ruleIndex)}>{subHeader}</h4>
                                 <div className={RuleCSS.indented}>
-                                    {rule.subRules.map((subRule: RuleData, subIndex: number) => <p key={`sub${subIndex.toString()}`}>{subRule.text}</p>)}
+                                    {rule.subRules.map((subRule: RuleData, subIndex: number) => <p ref={getRef(subRule.ruleIndex)} key={`sub${subIndex.toString()}`}>{subRule.text}</p>)}
                                 </div>
                             </Fragment>
                         )

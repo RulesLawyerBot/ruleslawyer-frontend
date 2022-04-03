@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import RuleDisplay from './ruleDisplay'
-import { RuleData } from './searchPage'
+import { RuleData } from '../model/model'
 
 import CSS from '../styles/resultList.module.css'
 
