@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 import { Citation } from '../model/model'
 
 interface Props {
@@ -10,7 +11,17 @@ interface Props {
     previousCitations?: Citation[]
 }
 
-const WithCitations: React.FunctionComponent<Props> = ({text, citations, styleWrapper, previousCitations = []}: Props ) => {
+const CitationLink = styled.span`
+    color: #696969;
+    text-decoration: underline;
+
+    :hover {
+        text-decoration: underline;
+        color: black;
+    }
+`
+
+const WithCitations: React.FunctionComponent<Props> = ({text, citations, styleWrapper = CitationLink, previousCitations = []}: Props ) => {
 
     if(citations.length === 0){
         return <Fragment>{text}</Fragment>

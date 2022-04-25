@@ -15,11 +15,12 @@ import HomeButton from './homeButton'
 import { Helmet } from 'react-helmet'
 
 export const rulesDocList: Record<string, string> = {
-    CR: 'Comprehensive Rules', 
+    CR: 'Comprehensive Rules',
+    CRG: 'Comprehensive Rules - Glossary',
     IPG: 'Infraction Procedure Guide',
     MTR: 'Magic Tournament Rules',
     JAR: 'Judging At Regular Document',
-    OATH: 'Oathbreaker Rules',
+    // OATH: 'Oathbreaker Rules',
     DIPG: 'Digital Infration Procedure Guide',
     DMTR: 'Digital Magic Tournament Rules'
 }
@@ -31,7 +32,8 @@ export interface RuleDataIncomplete extends RuleData {
 
 const Glossary: React.FunctionComponent = (): React.ReactElement => {
 
-    const { id: currentDoc } = useParams<{id: string}>()
+    const { id: currentDoc, heading } = useParams<{id: string, heading: string}>()
+    let navID = parseInt(heading)
 
     const [rules, setRulesDirect] = useState<Map<string, Map<number, RuleDataIncomplete>>>(new Map())
 
@@ -85,6 +87,10 @@ const Glossary: React.FunctionComponent = (): React.ReactElement => {
             fetchRuleList()
         }
     }, [currentDoc])
+
+    useEffect(() => {
+        document.getElementById(`rule${navID}`)?.scrollIntoView({behavior: 'smooth'})
+    }, [navID])
 
     let ruleElements: React.ReactElement[] = []
 
