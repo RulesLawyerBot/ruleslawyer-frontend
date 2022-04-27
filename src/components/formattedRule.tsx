@@ -48,12 +48,15 @@ const FormattedRule: React.FunctionComponent<Props> = ({ rule, hasTitle=false }:
     //this will never display for top level rules, but may for search results
     let subHeaderText: string = parentText.length > 0 ? parentText[1] || text : null
     // let subHeader: React.ReactElement = parentText.length > 0 ? <Highlighted text={parentText[1] || text} keywords={keywords} />: null
+    console.log(rule)
+    console.log(subHeaderText)
 
     //if subrule has no subrules and only one instance of parent text, the subheader will already contain necessary info
     if(subRules.length === 0) {
-        if(parentText.length > 1) {
-            body = <Indented><WithCitations text={text} citations={citations}/></Indented>
-        }
+        body = <Fragment>
+            {subHeaderText ? <h4 id={`rule${ruleIndex}`}><WithCitations text={text} citations={citations}/></h4> : null}
+            {parentText.length > 1 ? <Indented><WithCitations text={text} citations={citations}/></Indented> : null}
+        </Fragment>
     } else {
         body = <Fragment>
             {subHeaderText ? <h4 id={`rule${ruleIndex}`}><WithCitations text={text} citations={citations}/></h4> : null}

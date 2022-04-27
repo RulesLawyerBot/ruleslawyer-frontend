@@ -78,11 +78,11 @@ const Expandable: React.FunctionComponent<Props> = ({label, contents, getData}: 
         getData(contents.ruleIndex)
     }
 
-    // useEffect(() => {
-    //     if(navToHere) {
-    //         document.getElementById(`rule${navID}`)?.scrollIntoView({behavior: 'smooth'})
-    //     }
-    // }, [contents.hasFullRules])
+    useEffect(() => {
+        if(navToHere && open) {
+            document.getElementById(`rule${navID}`)?.scrollIntoView({behavior: 'smooth'})
+        }
+    }, [contents.hasFullRules])
 
     return(
         <div>
