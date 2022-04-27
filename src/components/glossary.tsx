@@ -108,7 +108,7 @@ const Glossary: React.FunctionComponent = (): React.ReactElement => {
             </Helmet>
             <div className={CSS.topBar}>
                 <HomeButton/>
-                Glossary
+                RulesLawyer Document Index
             </div>
             <div className={CSS.glossaryContainer}>
                 <RuleSourceDropdown/>
