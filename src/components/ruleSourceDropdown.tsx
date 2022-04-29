@@ -33,6 +33,8 @@ const RuleSourceDropdown: React.FunctionComponent = (): React.ReactElement => {
     useEffect(() => {
         if(id in rulesDocList){
             setOpen(false)
+        } else {
+            setOpen(true)
         }
     }, [id])
 

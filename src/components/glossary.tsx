@@ -104,11 +104,11 @@ const Glossary: React.FunctionComponent = (): React.ReactElement => {
     return (
         <div>
             <Helmet>
-                <title>{rulesDocList[currentDoc] || 'Glossary'} | RulesLawyer</title>
+                <title>{rulesDocList[currentDoc] || 'Documents'} | RulesLawyer</title>
             </Helmet>
             <div className={CSS.topBar}>
                 <HomeButton/>
-                RulesLawyer Document Index
+                Document Index
             </div>
             <div className={CSS.glossaryContainer}>
                 <RuleSourceDropdown/>
