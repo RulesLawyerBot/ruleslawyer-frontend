@@ -107,7 +107,7 @@ const Glossary: React.FunctionComponent = (): React.ReactElement => {
                 <title>{rulesDocList[currentDoc] || 'Documents'} | RulesLawyer</title>
             </Helmet>
             <div className={CSS.topBar}>
-                <HomeButton/>
+                <Link to="/"><img src='/favicon.png' height={30} width={30}/></Link>
                 Document Index
             </div>
             <div className={CSS.glossaryContainer}>
