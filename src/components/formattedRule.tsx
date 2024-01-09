@@ -54,7 +54,7 @@ const FormattedRule: React.FunctionComponent<Props> = ({ rule, hasTitle=false }:
     //if subrule has no subrules and only one instance of parent text, the subheader will already contain necessary info
     if(subRules.length === 0) {
         body = <Fragment>
-            {subHeaderText ? <h4 id={`rule${ruleIndex}`}><WithCitations text={text} citations={citations}/></h4> : null}
+            {subHeaderText ? <h4 id={`rule${ruleIndex}`}><WithCitations text={subHeaderText} citations={citations}/></h4> : null}
             {parentText.length > 1 ? <Indented><WithCitations text={text} citations={citations}/></Indented> : null}
         </Fragment>
     } else {
